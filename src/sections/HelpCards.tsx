@@ -44,7 +44,8 @@ export function HelpCards() {
           ].join(" ")}
         >
           {helpWith.items.map((item) => {
-            const photo = photoUrl(item.slot ?? "");
+            const photo =
+              photoUrl(item.panelSlot ?? "") ?? photoUrl(item.slot ?? "");
 
             return (
               <Link

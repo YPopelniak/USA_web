@@ -16,8 +16,8 @@ export const company = {
   phoneHref: "tel:+12243601633",
   /** E.164, for schema.org telephone. */
   phoneE164: "+12243601633",
-  email: "usappliancehvac@gmail.com",
-  emailHref: "mailto:usappliancehvac@gmail.com",
+  email: "info@usaappliancehvac.com",
+  emailHref: "mailto:info@usaappliancehvac.com",
   addressShort: "Chicago, IL",
   /** Service-area business: no storefront address published. */
   address: "Chicago and surrounding areas",
@@ -381,14 +381,6 @@ export const helpWith = {
       note: "Furnaces, A/C, mini-splits",
       icon: "wind",
       to: "/hvac-services",
-    },
-    {
-      title: "Installation services",
-      slot: "help-installation",
-      panelSlot: "service-heating-furnace-repair",
-      note: "Appliances, heating, cooling",
-      icon: "hard-hat",
-      to: "/installation",
     },
   ],
 };

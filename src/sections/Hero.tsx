@@ -18,7 +18,7 @@ export function Hero() {
         The image breaks the container and runs to the viewport edge on wide
         screens. Symmetric two-column heroes are the reflex; this isn't one.
       */}
-      <div className="container-page relative grid items-center gap-12 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:py-24">
+      <div className="container-page relative grid items-center gap-12 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-10 lg:pb-20 lg:pt-[60px]">
         <div className="relative z-10 max-w-2xl">
           <Enter>
             <h1
@@ -27,7 +27,7 @@ export function Hero() {
                * column is only ~483px wide, so a fixed lg size overflows.
                * Measured against the widest word pair in the headline.
                */
-              style={{ fontSize: "clamp(2.5rem, 4.9vw, 4rem)" }}
+              style={{ fontSize: "clamp(2.5rem, 4.6vw, 3.75rem)" }}
               className="type-display"
             >
               {hero.title[0]}{" "}
@@ -43,7 +43,7 @@ export function Hero() {
 
           <Enter delay={0.16}>
             <div className="mt-10 flex flex-wrap items-center gap-3">
-              <BookButton size="lg" />
+              <BookButton label="Book Now" size="lg" />
               <CallButton variant="outline" size="lg" />
             </div>
           </Enter>

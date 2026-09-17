@@ -159,7 +159,7 @@ export function Navbar() {
 
             <a
               href={company.phoneHref}
-              className="hidden h-12 items-center gap-2.5 whitespace-nowrap rounded-[var(--radius-action)] bg-brand-500 px-6 text-[15px] font-semibold text-white shadow-[0_6px_20px_-6px_rgba(34,64,156,0.45)] transition-all hover:bg-brand-600 active:scale-[0.98] xl:inline-flex"
+              className="hidden h-12 items-center gap-2.5 whitespace-nowrap rounded-[var(--radius-action)] bg-brand-500 px-6 text-[15px] font-semibold text-white shadow-[0_6px_20px_-6px_rgba(34,64,156,0.45)] transition-all hover:bg-brand-600 active:scale-[0.98] min-[1180px]:inline-flex"
             >
               <Phone className="size-4" aria-hidden="true" />
               {company.phone}
@@ -170,7 +170,7 @@ export function Navbar() {
             <a
               href={company.phoneHref}
               aria-label={`Call ${company.phone}`}
-              className="inline-flex size-11 items-center justify-center rounded-[var(--radius-action)] bg-brand-500 text-white shadow-[0_6px_20px_-8px_rgba(34,64,156,0.5)] transition-colors hover:bg-brand-600 xl:hidden"
+              className="inline-flex size-11 items-center justify-center rounded-[var(--radius-action)] bg-brand-500 text-white shadow-[0_6px_20px_-8px_rgba(34,64,156,0.5)] transition-colors hover:bg-brand-600 min-[1180px]:hidden"
             >
               <Phone className="size-[18px]" aria-hidden="true" />
             </a>

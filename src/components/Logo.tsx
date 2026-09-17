@@ -26,7 +26,7 @@ export function Logo({
         // Nudged up: the descriptor line sits under the mark, so optically the
         // lockup's centre is lower than its bounding box centre, and row
         // centring alone leaves it sitting heavy.
-        "group inline-flex shrink-0 -translate-y-[3px] flex-col items-center",
+        "group inline-flex shrink-0 -translate-y-[3px] scale-[1.02] flex-col items-center",
         className,
       )}
     >

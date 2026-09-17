@@ -22,7 +22,7 @@ function Diamond() {
   return (
     <span
       aria-hidden="true"
-      className="mx-5 inline-block size-1 shrink-0 rotate-45 bg-brand-500/60"
+      className="mx-5 inline-block size-1 shrink-0 rotate-45 bg-white/50"
     />
   );
 }
@@ -31,7 +31,7 @@ export function TopBar() {
   const hours = useOpenState();
 
   return (
-    <div className="hidden border-b border-black/[0.06] bg-white text-[13px] text-ink-muted lg:block">
+    <div className="hidden border-b border-white/10 bg-[#203247] text-[13px] text-white/80 lg:block">
       <div className="container-page flex h-11 items-center justify-between">
         <p className="flex items-center">
           <span>{company.address}</span>
@@ -47,8 +47,8 @@ export function TopBar() {
                 <span className="status-pulse absolute inset-0 rounded-full bg-emerald-500" />
               )}
             </span>
-            <span className="text-ink">{hours.label}</span>
-            <span className="text-ink-muted">· {hours.detail}</span>
+            <span className="text-white">{hours.label}</span>
+            <span className="text-white/80">· {hours.detail}</span>
           </span>
           <Diamond />
           <span>Licensed &amp; insured in Illinois</span>
@@ -62,7 +62,7 @@ export function TopBar() {
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label={s.label}
-                className="block text-ink-muted transition-colors hover:text-brand-600"
+                className="block text-white/80 transition-colors hover:text-white"
               >
                 <SocialIcon name={s.icon} />
               </a>
