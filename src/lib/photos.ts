@@ -52,7 +52,7 @@ export type PhotoSlot =
 /** Intrinsic size per slot, so <img> can reserve space and avoid layout shift. */
 export const PHOTO_SIZES: Record<PhotoSlot, { width: number; height: number }> = {
   "hero-technician": { width: 1800, height: 1620 },
-  "about-crew": { width: 800, height: 1067 },
+  "about-crew": { width: 1086, height: 1449 },
   "about-van": { width: 800, height: 1067 },
   "service-refrigerator-repair": { width: 1000, height: 1250 },
   "service-washer-dryer-repair": { width: 1000, height: 1250 },

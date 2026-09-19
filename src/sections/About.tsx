@@ -11,7 +11,7 @@ export function About() {
           <div className="grid grid-cols-2 gap-4">
             <Placeholder
               slot="about-crew"
-              alt="Two USA Appliance & HVAC technicians talking through a job at the door of a Chicago two-flat"
+              alt="USA Appliance & HVAC technician with a tool bag and tablet, with a second technician servicing an indoor HVAC unit"
               label="Crew on site"
               ratio="3/4"
               className="mt-8 w-full"
