@@ -211,7 +211,7 @@ def build_prompt(slot: dict) -> str:
 
 
 def fit_to_size(raw: bytes, size: tuple[int, int]) -> bytes:
-    """Center-crop to the target aspect ratio, resize, save as JPEG q82."""
+    """Center-crop to the target aspect ratio, resize, save as WebP q82."""
     img = Image.open(io.BytesIO(raw)).convert("RGB")
     target_w, target_h = size
     target_ratio = target_w / target_h
@@ -226,7 +226,7 @@ def fit_to_size(raw: bytes, size: tuple[int, int]) -> bytes:
         img = img.crop((0, top, w, top + new_h))
     img = img.resize(size, Image.LANCZOS)
     buf = io.BytesIO()
-    img.save(buf, "JPEG", quality=82, optimize=True, progressive=True)
+    img.save(buf, "WEBP", quality=82, method=6)
     return buf.getvalue()
 
 
@@ -253,7 +253,7 @@ def generate(client, slot: dict, model: str) -> bool:
         return False
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    out = OUT_DIR / f"{slot['name']}.jpg"
+    out = OUT_DIR / f"{slot['name']}.webp"
     out.write_bytes(fit_to_size(raw, slot["size"]))
     print(f"  {slot['name']}: saved {out.relative_to(PROJECT)} ({out.stat().st_size // 1024} KB)")
     return True

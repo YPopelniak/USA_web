@@ -50,16 +50,27 @@ export function BookButton({
     </>
   );
 
+  const analytics = {
+    "data-analytics": "book",
+    "data-analytics-topic": topic ?? "general",
+  } as const;
+
   if (isConfigured) {
     return (
-      <a href={bookingUrl} target="_blank" rel="noreferrer noopener" className={classes}>
+      <a
+        href={bookingUrl}
+        target="_blank"
+        rel="noreferrer noopener"
+        className={classes}
+        {...analytics}
+      >
         {inner}
       </a>
     );
   }
 
   return (
-    <button type="button" onClick={() => open(topic)} className={classes}>
+    <button type="button" onClick={() => open(topic)} className={classes} {...analytics}>
       {inner}
     </button>
   );

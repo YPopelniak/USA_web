@@ -19,10 +19,10 @@ const files = import.meta.glob("../assets/photos/*.{jpg,jpeg,png,webp,avif}", {
 
 /**
  * The size a slot expects is carried in the filename as a `__<W>x<H>` suffix
- * and stripped back off here, so `hero-technician__1800x1620.jpg` fills the
+ * and stripped back off here, so `hero-technician__1800x1620.webp` fills the
  * `hero-technician` slot. The client replaces photography by dropping a file
  * over the one already in the folder, and the name tells them what to supply
- * without opening anything. A plain `hero-technician.jpg` still works.
+ * without opening anything. A plain `hero-technician.webp` still works.
  */
 const bySlot: Record<string, string> = {};
 for (const [path, url] of Object.entries(files)) {
@@ -46,7 +46,8 @@ export type PhotoSlot =
   | "help-dishwasher"
   | "help-oven-range"
   | "help-hvac"
-  | "help-installation";
+  | "help-installation"
+  | "where-we-work";
 
 /** Intrinsic size per slot, so <img> can reserve space and avoid layout shift. */
 export const PHOTO_SIZES: Record<PhotoSlot, { width: number; height: number }> = {
@@ -69,6 +70,7 @@ export const PHOTO_SIZES: Record<PhotoSlot, { width: number; height: number }> =
   "help-oven-range": { width: 900, height: 675 },
   "help-hvac": { width: 900, height: 675 },
   "help-installation": { width: 900, height: 675 },
+  "where-we-work": { width: 1672, height: 941 },
 };
 
 export function photoUrl(slot: string): string | undefined {

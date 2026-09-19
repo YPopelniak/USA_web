@@ -11,10 +11,10 @@ import { Faq } from "@/sections/Faq";
 import { FinalCta } from "@/sections/FinalCta";
 import { useSeo } from "@/lib/seo";
 import { groupSeo, serviceGroups } from "@/content";
-import hvacHero from "@/assets/photos/landinghvac.png";
-import applianceHero from "@/assets/photos/applience.png";
-import applianceRepairHero from "@/assets/photos/repair.png";
-import commercialHero from "@/assets/photos/commercial.png";
+import hvacHero from "@/assets/photos/landinghvac.webp";
+import applianceHero from "@/assets/photos/applience.webp";
+import applianceRepairHero from "@/assets/photos/repair.webp";
+import commercialHero from "@/assets/photos/commercial.webp";
 import NotFound from "./NotFound";
 
 /** One component behind all four category routes — the data drives the page. */
@@ -41,7 +41,7 @@ export default function ServiceCategory() {
           image={hvacHero}
           imageAlt="USA Appliance & HVAC technician servicing an outdoor air conditioning unit"
           topic="HVAC service"
-          thirdTrustItem="Residential & commercial"
+          thirdTrustItem="EPA Section 608"
           ratingLabel="Trusted local HVAC service"
         />
       ) : group.slug === "appliance-repair" ? (
@@ -74,7 +74,7 @@ export default function ServiceCategory() {
           image={commercialHero}
           imageAlt="USA Appliance & HVAC technician servicing commercial HVAC equipment beside a company van in Chicago"
           topic="Commercial service"
-          thirdTrustItem="Restaurants & businesses"
+          thirdTrustItem="EPA Section 608"
           ratingLabel="Trusted local commercial service"
         />
       ) : (

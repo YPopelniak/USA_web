@@ -18,7 +18,7 @@ import {
 } from "@/lib/callback";
 import { cn } from "@/lib/utils";
 
-type Ctx = { open: (topic?: string) => void; close: () => void };
+type Ctx = { open: (topic?: string) => void; close: () => void; isOpen: boolean };
 const CallbackContext = createContext<Ctx | null>(null);
 
 export function useCallbackModal() {
@@ -39,7 +39,7 @@ export function CallbackProvider({ children }: { children: ReactNode }) {
     setIsOpen(true);
   }, []);
   const close = useCallback(() => setIsOpen(false), []);
-  const value = useMemo(() => ({ open, close }), [open, close]);
+  const value = useMemo(() => ({ open, close, isOpen }), [open, close, isOpen]);
 
   return (
     <CallbackContext.Provider value={value}>

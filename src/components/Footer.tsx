@@ -79,6 +79,7 @@ export function Footer() {
                 <li>
                   <a
                     href={company.phoneHref}
+                    data-cta-location="footer"
                     className="-mx-2 inline-flex min-h-11 items-center gap-2.5 px-2 transition-colors hover:text-brand-600"
                   >
                     <Phone className="size-4 text-brand-500" aria-hidden="true" />
@@ -137,6 +138,9 @@ export function Footer() {
             © {new Date().getFullYear()} {company.name}. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
+            <Link to="/warranty" className="transition-colors hover:text-brand-600">
+              Warranty
+            </Link>
             <Link to="/privacy" className="transition-colors hover:text-brand-600">
               Privacy Policy
             </Link>

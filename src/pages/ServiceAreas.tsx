@@ -1,12 +1,12 @@
-import { PageHero } from "@/components/PageHero";
-import { BookButton } from "@/components/BookButton";
-import { CallButton } from "@/components/CallButton";
+import { ServiceLandingHero } from "@/components/ServiceLandingHero";
 import { Reveal } from "@/components/Reveal";
 import { useSeo } from "@/lib/seo";
 import { Segments } from "@/sections/Segments";
 import { Faq } from "@/sections/Faq";
 import { FinalCta } from "@/sections/FinalCta";
-import { company, seo, serviceAreaTowns } from "@/content";
+import { Link } from "react-router-dom";
+import { company, locationPagePath, seo, serviceAreaTowns } from "@/content";
+import serviceAreasHero from "@/assets/photos/where-we-work.webp";
 
 export default function ServiceAreas() {
   const COLUMNS = 6; // lowest common multiple of the 2- and 3-column layouts
@@ -16,17 +16,16 @@ export default function ServiceAreas() {
 
   return (
     <>
-      <PageHero
-        kicker="Service areas"
-        title="Where we work"
-        body={`USA Appliance & HVAC covers ${company.serviceArea} for appliance and HVAC repair, installation and maintenance.`}
-        crumbs={[{ label: "Service Areas" }]}
-      >
-        <div className="flex flex-wrap gap-3">
-          <BookButton />
-          <CallButton />
-        </div>
-      </PageHero>
+      <ServiceLandingHero
+        eyebrow="Service Areas"
+        heading="Where we work"
+        description={`USA Appliance & HVAC covers ${company.serviceArea} for appliance and HVAC repair, installation and maintenance.`}
+        image={serviceAreasHero}
+        imageAlt="USA Appliance & HVAC technician with a marked van in a Chicago-area neighborhood"
+        topic="Service area"
+        thirdTrustItem="Chicago & suburbs"
+        ratingLabel="Trusted local appliance and HVAC service"
+      />
 
       <section className="container-page py-16 lg:py-24">
         <Reveal>
@@ -41,18 +40,30 @@ export default function ServiceAreas() {
             twenty-two identical icons carry no information after the first.
           */}
           <ul className="grid gap-px overflow-hidden bg-black/[0.07] sm:grid-cols-2 lg:grid-cols-3">
-            {serviceAreaTowns.map((town) => (
-              <li
-                key={town}
-                className="flex items-center gap-3 bg-white px-6 py-5 text-[16px]"
-              >
-                <span
-                  aria-hidden="true"
-                  className="size-1.5 shrink-0 rotate-45 bg-brand-500/70"
-                />
-                {town}
-              </li>
-            ))}
+            {serviceAreaTowns.map((town) => {
+              const href = locationPagePath(town);
+              return (
+                <li
+                  key={town}
+                  className="flex items-center gap-3 bg-white px-6 py-5 text-[16px]"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="size-1.5 shrink-0 rotate-45 bg-brand-500/70"
+                  />
+                  {href ? (
+                    <Link
+                      to={href}
+                      className="transition-colors hover:text-brand-600"
+                    >
+                      {town}
+                    </Link>
+                  ) : (
+                    town
+                  )}
+                </li>
+              );
+            })}
             {Array.from({ length: fillers }).map((_, i) => (
               <li key={`filler-${i}`} aria-hidden="true" className="hidden bg-white sm:block" />
             ))}

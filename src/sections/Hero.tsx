@@ -42,8 +42,8 @@ export function Hero() {
           </Enter>
 
           <Enter delay={0.16}>
-            <div className="mt-10 flex flex-wrap items-center gap-3">
-              <BookButton label="Book Now" size="lg" />
+            <div className="mt-10 flex flex-wrap items-center gap-3" data-cta-location="hero">
+              <BookButton label="Book Service" size="lg" />
               <CallButton variant="outline" size="lg" />
             </div>
           </Enter>

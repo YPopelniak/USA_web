@@ -1,10 +1,18 @@
 import { useState } from "react";
 import { Minus, Plus } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
-import { faqs } from "@/content";
+import { faqs, type LocationFaq } from "@/content";
 import { cn } from "@/lib/utils";
 
-export function Faq() {
+export function Faq({
+  items = faqs,
+  title = "Questions we get before the first visit",
+  body = "Anything not covered here — call and ask. We would rather answer it now than have it become a surprise on the invoice.",
+}: {
+  items?: readonly LocationFaq[];
+  title?: string;
+  body?: string;
+}) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
@@ -12,17 +20,16 @@ export function Faq() {
       <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <Reveal>
           <h2 className="type-title text-[32px] sm:text-[42px] max-w-sm">
-            Questions we get before the first visit
+            {title}
           </h2>
           <p className="mt-5 max-w-sm text-[16px] leading-relaxed text-ink-muted">
-            Anything not covered here — call and ask. We would rather answer it
-            now than have it become a surprise on the invoice.
+            {body}
           </p>
         </Reveal>
 
         <Reveal delay={0.08}>
           <ul className="divide-y divide-black/[0.08] border-y border-black/[0.08]">
-            {faqs.map((f, i) => {
+            {items.map((f, i) => {
               const isOpen = open === i;
               return (
                 <li key={f.q}>

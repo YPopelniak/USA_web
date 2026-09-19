@@ -51,7 +51,7 @@ export function TopBar() {
             <span className="text-white/80">· {hours.detail}</span>
           </span>
           <Diamond />
-          <span>Licensed &amp; insured in Illinois</span>
+          <span>Licensed &amp; insured in Illinois · EPA 608</span>
         </p>
 
         <ul className="flex items-center gap-4">

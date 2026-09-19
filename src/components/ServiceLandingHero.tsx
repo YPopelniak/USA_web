@@ -1,5 +1,5 @@
 import { Building2, Clock3, ShieldCheck } from "lucide-react";
-import skyline from "../../images/why-us-chicago.jpg";
+import skyline from "../../images/why-us-chicago.webp";
 import { BookButton } from "./BookButton";
 import { CallButton } from "./CallButton";
 
@@ -63,9 +63,9 @@ export function ServiceLandingHero({
             ))}
           </ul>
 
-          <div className="mt-7 flex flex-wrap items-center gap-3">
+          <div className="mt-7 flex flex-wrap items-center gap-3" data-cta-location="hero">
             <BookButton
-              label="Book Now"
+              label="Book Service"
               topic={topic}
               className="min-w-[168px]"
             />

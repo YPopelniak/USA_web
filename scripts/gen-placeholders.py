@@ -4,7 +4,7 @@ Draw a "your image here" placeholder for every photo slot.
 
 The client supplies the photography, so every slot ships a placeholder that
 states the exact pixel size it expects — both in the filename
-(`<slot>__<W>x<H>.jpg`, which `src/lib/photos.ts` reads back) and printed on
+(`<slot>__<W>x<H>.webp`, which `src/lib/photos.ts` reads back) and printed on
 the image itself, so the size is visible on the live site without opening a
 folder. Replacing a photo means dropping a file over the one already there,
 keeping its name.
@@ -142,8 +142,8 @@ def main() -> int:
             print(f"  skip  {slot} (real photography)")
             continue
         w, h = sizes[slot]
-        out = PHOTOS / f"{slot}__{w}x{h}.jpg"
-        render(slot, w, h).save(out, quality=72, optimize=True, subsampling=2)
+        out = PHOTOS / f"{slot}__{w}x{h}.webp"
+        render(slot, w, h).save(out, "WEBP", quality=82, method=6)
         print(f"  wrote {out.relative_to(ROOT)}  {out.stat().st_size // 1024} kB")
 
     if not sys.argv[1:]:

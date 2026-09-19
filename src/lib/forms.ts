@@ -9,6 +9,8 @@
  * override means a staging deploy can point somewhere else without a code edit.
  */
 
+import { trackLead } from "@/lib/analytics";
+
 const ENDPOINT =
   (import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined)?.trim() ||
   "https://formspree.io/f/xbgjrwzj";
@@ -39,7 +41,11 @@ export async function sendToFormspree(
       signal: controller.signal,
     });
 
-    if (res.ok) return { ok: true };
+    if (res.ok) {
+      const formName = typeof payload.form === "string" ? payload.form : "Website form";
+      trackLead(formName);
+      return { ok: true };
+    }
 
     // Formspree reports validation problems as { errors: [{ message }] }.
     const data = await res.json().catch(() => null);

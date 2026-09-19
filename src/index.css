@@ -32,6 +32,7 @@
   --z-dropdown: 50;
   --z-backdrop: 60;
   --z-modal: 70;
+  --sticky-cta-height: calc(4.25rem + env(safe-area-inset-bottom, 0px));
 }
 
 @layer base {
@@ -49,6 +50,7 @@
      * rings scale past the right edge on narrow screens.
      */
     overflow-x: clip;
+    padding-bottom: var(--sticky-cta-height);
   }
 
   h1, h2, h3, h4 {
@@ -232,6 +234,7 @@
   --dur-fast: 220ms;
   --dur-base: 420ms;
   --dur-slow: 680ms;
+  --sticky-cta-height: calc(4.25rem + env(safe-area-inset-bottom, 0px));
 }
 
 /* Open-for-business indicator. Reports state, so it runs only while the

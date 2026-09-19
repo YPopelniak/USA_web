@@ -4,6 +4,7 @@ import {
   company,
   faqs,
   googleReviews,
+  type LocationFaq,
   serviceAreaTowns,
   serviceGroups,
   site,
@@ -65,6 +66,17 @@ export function localBusinessSchema() {
       })),
     },
     sameAs: company.socials.map((s) => s.href),
+    hasCredential: [
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "certification",
+        name: "EPA Section 608 Technician Certification",
+        recognizedBy: {
+          "@type": "Organization",
+          name: "U.S. Environmental Protection Agency",
+        },
+      },
+    ],
   };
 
   if (businessFacts.founded) node.foundingDate = businessFacts.founded;
@@ -123,11 +135,75 @@ export function serviceGroupSchema(groupSlug: string) {
   };
 }
 
-export function faqSchema() {
+export function refrigeratorRepairServiceSchema() {
+  const path = "/appliance-repair/refrigerator-repair";
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${site.url}${path}#service`,
+    name: "Refrigerator and Freezer Repair",
+    serviceType: "Residential refrigerator and freezer diagnosis and repair",
+    description:
+      "Residential refrigerator, freezer and ice-maker diagnosis and repair in Chicago and surrounding suburbs.",
+    url: `${site.url}${path}`,
+    provider: { "@id": ID },
+    areaServed: serviceAreaTowns.map((name) => ({ "@type": "City", name })),
+  };
+}
+
+export function washerDryerRepairServiceSchema() {
+  const path = "/appliance-repair/washer-dryer-repair";
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${site.url}${path}#service`,
+    name: "Washer and Dryer Repair",
+    serviceType: "Residential washer and dryer diagnosis and repair",
+    description:
+      "Residential washing machine and dryer diagnosis and repair in Chicago and surrounding suburbs.",
+    url: `${site.url}${path}`,
+    provider: { "@id": ID },
+    areaServed: serviceAreaTowns.map((name) => ({ "@type": "City", name })),
+  };
+}
+
+export function dishwasherRepairServiceSchema() {
+  const path = "/appliance-repair/dishwasher-repair";
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${site.url}${path}#service`,
+    name: "Dishwasher Repair",
+    serviceType: "Residential dishwasher diagnosis and repair",
+    description:
+      "Residential dishwasher diagnosis and repair in Chicago and surrounding suburbs.",
+    url: `${site.url}${path}`,
+    provider: { "@id": ID },
+    areaServed: serviceAreaTowns.map((name) => ({ "@type": "City", name })),
+  };
+}
+
+export function ovenStoveRepairServiceSchema() {
+  const path = "/appliance-repair/oven-stove-repair";
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${site.url}${path}#service`,
+    name: "Oven, Stove and Range Repair",
+    serviceType: "Residential oven, stove, range and cooktop repair",
+    description:
+      "Residential gas and electric oven, stove, range and cooktop diagnosis and repair in Chicago and surrounding suburbs.",
+    url: `${site.url}${path}`,
+    provider: { "@id": ID },
+    areaServed: serviceAreaTowns.map((name) => ({ "@type": "City", name })),
+  };
+}
+
+export function faqSchema(items: readonly LocationFaq[] = faqs) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
+    mainEntity: items.map((f) => ({
       "@type": "Question",
       name: f.q,
       acceptedAnswer: { "@type": "Answer", text: f.a },

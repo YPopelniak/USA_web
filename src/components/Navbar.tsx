@@ -147,14 +147,14 @@ export function Navbar() {
             </div>
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2" data-cta-location="header">
             {/*
               Wrapped rather than given `hidden` directly: the button's own
               base class sets `inline-flex`, and Tailwind resolves same-property
               conflicts by stylesheet order, not class order.
             */}
             <div className="hidden lg:block">
-              <BookButton />
+              <BookButton label="Book Service" />
             </div>
 
             <a
@@ -239,7 +239,7 @@ export function Navbar() {
                 ))}
               </nav>
 
-              <div className="mt-auto space-y-3 border-t border-black/[0.07] pt-6">
+              <div className="mt-auto space-y-3 border-t border-black/[0.07] pt-6" data-cta-location="mobile_menu">
                 <a
                   href={company.phoneHref}
                   className="flex h-13 items-center justify-center gap-2 rounded-[var(--radius-action)] bg-brand-500 px-6 py-3.5 font-semibold text-white"
@@ -247,7 +247,7 @@ export function Navbar() {
                   <Phone className="size-4" aria-hidden="true" />
                   {company.phone}
                 </a>
-                <BookButton className="w-full" />
+                <BookButton label="Book Service" className="w-full" />
                 <a
                   href={company.emailHref}
                   className="flex items-center justify-center rounded-[var(--radius-action)] border border-black/12 px-6 py-3.5 font-medium text-ink"

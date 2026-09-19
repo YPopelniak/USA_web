@@ -1,6 +1,7 @@
 import { Hero } from "@/sections/Hero";
 import { ServiceSelector } from "@/sections/ServiceSelector";
 import { WhyUs } from "@/sections/WhyUs";
+import { Credentials } from "@/sections/Credentials";
 import { Segments } from "@/sections/Segments";
 import { ServiceAreasBand } from "@/sections/ServiceAreasBand";
 import { GoogleReviews } from "@/sections/GoogleReviews";
@@ -21,6 +22,7 @@ export default function Home() {
       <ServiceSelector />
       <ServiceAreasBand />
       <WhyUs />
+      <Credentials />
       <Segments />
       <GoogleReviews />
       <Faq />

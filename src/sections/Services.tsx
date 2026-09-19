@@ -1,29 +1,26 @@
+import { Link } from "react-router-dom";
 import { ServiceIcon } from "@/components/ServiceIcon";
 import { type Service } from "@/content";
 
 /**
  * A single service inside a category.
  *
- * These are statements, not destinations — services have no pages of their
- * own — so the hover reads as emphasis rather than affordance: the card slides
- * a little, the badge wakes up, the body text firms from muted to ink. No
- * lift, no shadow, no pointer cursor, nothing that promises a click that isn't
- * there. Colour and a nudge say "you are looking at this"; depth would say
- * "you can press this".
+ * Most rows are statements. Services with a published detail route provide
+ * `to` and become links without changing the card's visual language.
  *
  * Everything animated here is transform or colour, so hovering across a grid
  * of them never touches layout.
  */
 export function ServiceRow({ service }: { service: Service }) {
-  return (
-    <div
-      className={[
-        "group flex gap-3.5 rounded-[var(--radius-card)] border border-black/[0.08] bg-white p-5",
-        "motion-safe:transition-[translate,border-color]",
-        "motion-safe:duration-[var(--dur-base)] motion-safe:ease-[var(--ease-out-quint)]",
-        "hover:border-brand-500/35 motion-safe:hover:translate-x-1",
-      ].join(" ")}
-    >
+  const className = [
+    "group flex gap-3.5 rounded-[var(--radius-card)] border border-black/[0.08] bg-white p-5",
+    "motion-safe:transition-[translate,border-color]",
+    "motion-safe:duration-[var(--dur-base)] motion-safe:ease-[var(--ease-out-quint)]",
+    "hover:border-brand-500/35 motion-safe:hover:translate-x-1",
+  ].join(" ");
+
+  const content = (
+    <>
       <span
         className={[
           "mt-0.5 inline-flex size-9 shrink-0 items-center justify-center rounded-none bg-brand-50 text-brand-600",
@@ -41,6 +38,14 @@ export function ServiceRow({ service }: { service: Service }) {
           {service.short}
         </span>
       </span>
-    </div>
+    </>
+  );
+
+  return service.to ? (
+    <Link to={service.to} className={className}>
+      {content}
+    </Link>
+  ) : (
+    <div className={className}>{content}</div>
   );
 }

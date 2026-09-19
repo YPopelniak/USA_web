@@ -26,7 +26,7 @@ export function FinalCta() {
             {finalCta.body}
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-3" data-cta-location="final_cta">
             <BookButton variant="light" size="lg" />
             <CallButton variant="quiet" size="lg" />
           </div>

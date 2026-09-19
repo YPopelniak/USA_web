@@ -5,6 +5,8 @@ import { company, site } from "@/content";
 type SeoInput = {
   title: string;
   description: string;
+  ogTitle?: string;
+  ogDescription?: string;
   /** Path only, e.g. "/services". Defaults to the current location. */
   path?: string;
   /** "website" for pages, "article" for editorial. */
@@ -49,6 +51,8 @@ function upsertLink(rel: string, href: string) {
 export function useSeo({
   title,
   description,
+  ogTitle = title,
+  ogDescription = description,
   path,
   type = "website",
   image = site.ogImage,
@@ -71,8 +75,8 @@ export function useSeo({
 
     // Open Graph — Facebook, LinkedIn, WhatsApp, Telegram, iMessage
     const og: Array<[string, string]> = [
-      ["og:title", title],
-      ["og:description", description],
+      ["og:title", ogTitle],
+      ["og:description", ogDescription],
       ["og:url", url],
       ["og:type", type],
       ["og:image", absoluteImage],
@@ -109,5 +113,5 @@ export function useSeo({
       s.textContent = JSON.stringify(block);
       document.head.appendChild(s);
     }
-  }, [title, description, url, type, absoluteImage, noindex, schema]);
+  }, [title, description, ogTitle, ogDescription, url, type, absoluteImage, noindex, schema]);
 }

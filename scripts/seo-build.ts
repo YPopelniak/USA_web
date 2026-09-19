@@ -26,7 +26,9 @@ import {
   process as processContent,
   seo,
   serviceAreaTowns,
+  locationPages,
   privacy,
+  warranty,
   serviceGroups,
   site,
   whyUs,
@@ -35,6 +37,10 @@ import {
   breadcrumbSchema,
   faqSchema,
   localBusinessSchema,
+  refrigeratorRepairServiceSchema,
+  washerDryerRepairServiceSchema,
+  dishwasherRepairServiceSchema,
+  ovenStoveRepairServiceSchema,
   serviceGroupSchema,
   websiteSchema,
 } from "../src/lib/schema";
@@ -49,6 +55,8 @@ type Route = {
   path: string;
   title: string;
   description: string;
+  ogTitle?: string;
+  ogDescription?: string;
   /** Sitemap priority, 0–1. */
   priority: number;
   changefreq: "weekly" | "monthly" | "yearly";
@@ -103,6 +111,116 @@ const routes: Route[] = [
     ],
   })),
   {
+    path: "/appliance-repair/refrigerator-repair",
+    title: "Refrigerator Repair Chicago | USA Appliance & HVAC",
+    description:
+      "Same-day refrigerator and freezer repair in Chicago and surrounding suburbs. We fix cooling problems, leaks, ice makers and error codes. Call (224) 360-1633.",
+    priority: 0.9,
+    changefreq: "monthly",
+    schema: [
+      refrigeratorRepairServiceSchema(),
+      breadcrumbSchema([
+        { name: "Appliance Repair", path: "/appliance-repair" },
+        {
+          name: "Refrigerator & Freezer Repair",
+          path: "/appliance-repair/refrigerator-repair",
+        },
+      ]),
+    ],
+    summary: [
+      "Refrigerator & Freezer Repair in Chicago and Surrounding Suburbs.",
+      "We diagnose residential refrigerators, freezers and ice makers that are not cooling, leaking, making unusual noises, building up frost, freezing food or showing control errors. The actual cause is tested before parts are recommended.",
+      "Service includes condenser and evaporator fans, sensors, thermostats, start relays, defrost components, control boards, water valves, drain lines, door gaskets, hinges, ice makers, dispensers, compressors and sealed refrigeration systems. Refrigerant work is completed by EPA Section 608 certified technicians.",
+      "We service French-door, side-by-side, top-freezer, bottom-freezer, built-in, counter-depth and column refrigerators, plus stand-alone residential freezers. Brand and model support is confirmed when booking.",
+      "After booking, a technician diagnoses the fault, explains the repair and price before work begins, completes the approved repair when parts are available, and tests the refrigerator. Model-specific parts may require a return visit.",
+      "Service is available across Chicago and selected northern, northwest and western suburbs. Same-day appointments may be available. Call early for the first available opening.",
+    ],
+  },
+  {
+    path: "/appliance-repair/washer-dryer-repair",
+    title: "Washer & Dryer Repair Chicago | USA Appliance & HVAC",
+    description:
+      "Same-day washer and dryer repair in Chicago and surrounding suburbs. We fix draining, spinning, leaking and heating problems. Call (224) 360-1633.",
+    ogTitle: "Washer & Dryer Repair in Chicago and Surrounding Suburbs",
+    ogDescription:
+      "Washer not draining or dryer not heating? Schedule professional laundry-appliance repair with USA Appliance & HVAC.",
+    priority: 0.9,
+    changefreq: "monthly",
+    schema: [
+      washerDryerRepairServiceSchema(),
+      breadcrumbSchema([
+        { name: "Appliance Repair", path: "/appliance-repair" },
+        {
+          name: "Washer & Dryer Repair",
+          path: "/appliance-repair/washer-dryer-repair",
+        },
+      ]),
+    ],
+    summary: [
+      "Washer & Dryer Repair in Chicago and Surrounding Suburbs.",
+      "We diagnose front-load, top-load and stackable laundry equipment that will not drain, spin, heat or tumble. The actual cause is tested before parts are recommended.",
+      "Washer work includes drain pumps, inlet valves, door locks, belts, motors, bearings, suspension, seals, pressure switches and control boards. Dryer work includes thermal fuses, heating elements, igniters, thermostats, belts, rollers, motors, blowers and moisture sensors.",
+      "Many common repairs may be completed during the first visit depending on the problem and parts availability. Model-specific parts may require a return visit.",
+      "Service is available across Chicago and selected northern, northwest and western suburbs. Same-day appointments may be available. Call early for the first available opening.",
+    ],
+  },
+  {
+    path: "/appliance-repair/dishwasher-repair",
+    title: "Dishwasher Repair Chicago | USA Appliance & HVAC",
+    description:
+      "Same-day dishwasher repair in Chicago and surrounding suburbs. We fix draining, leaking, cleaning, drying and error-code problems. Call (224) 360-1633.",
+    ogTitle: "Dishwasher Repair in Chicago | USA Appliance & HVAC",
+    ogDescription:
+      "Dishwasher leaking, not draining, or leaving dishes dirty? Schedule professional dishwasher repair in Chicago and surrounding suburbs.",
+    priority: 0.9,
+    changefreq: "monthly",
+    schema: [
+      dishwasherRepairServiceSchema(),
+      breadcrumbSchema([
+        { name: "Appliance Repair", path: "/appliance-repair" },
+        {
+          name: "Dishwasher Repair",
+          path: "/appliance-repair/dishwasher-repair",
+        },
+      ]),
+    ],
+    summary: [
+      "Dishwasher Repair in Chicago and Surrounding Suburbs.",
+      "We diagnose residential dishwashers with standing water, leaks, dirty dishes, drying problems, filling issues, start failures, noise, odor, latch problems, dispenser faults, overflow and error codes. Similar symptoms can have different causes, so testing happens before parts are replaced.",
+      "Service includes drain pumps, circulation pumps, inlet valves, heating elements, sensors, floats, latches, spray arms, filters, hoses, gaskets, dispensers, control boards and wiring.",
+      "This page is for residential dishwashers. Commercial kitchen equipment is handled on the commercial services page.",
+      "Service is available across Chicago and selected northern, northwest and western suburbs. Same-day appointments may be available. Call early for the first available opening.",
+    ],
+  },
+  {
+    path: "/appliance-repair/oven-stove-repair",
+    title: "Oven, Stove & Range Repair Chicago | USA Appliance & HVAC",
+    description:
+      "Oven not heating or stove burner not igniting? Schedule oven, stove and range repair in Chicago and surrounding suburbs. Call (224) 360-1633.",
+    ogTitle: "Oven, Stove & Range Repair in Chicago",
+    ogDescription:
+      "Professional repair for gas and electric ovens, stoves, ranges and cooktops throughout Chicago and surrounding suburbs.",
+    priority: 0.9,
+    changefreq: "monthly",
+    schema: [
+      ovenStoveRepairServiceSchema(),
+      breadcrumbSchema([
+        { name: "Appliance Repair", path: "/appliance-repair" },
+        {
+          name: "Oven, Stove & Range Repair",
+          path: "/appliance-repair/oven-stove-repair",
+        },
+      ]),
+    ],
+    summary: [
+      "Oven, Stove & Range Repair in Chicago.",
+      "We diagnose gas and electric ovens, stoves, ranges and cooktops that are not heating, not igniting, cooking unevenly, showing error codes, or having door, broiler, convection or control problems. Similar symptoms can have different causes, so testing happens before parts are replaced.",
+      "If you smell gas, leave the area and contact 911 or your gas utility. Never use a gas oven or range to heat your home.",
+      "This page is for residential cooking appliances. Commercial kitchen equipment is handled on the commercial services page.",
+      "Service is available across Chicago and selected northern, northwest and western suburbs. Same-day appointments may be available. Call early for the first available opening.",
+    ],
+  },
+  {
     path: "/service-areas",
     ...seo.serviceAreas,
     priority: 0.7,
@@ -110,6 +228,35 @@ const routes: Route[] = [
     schema: [localBusinessSchema(), breadcrumbSchema([{ name: "Service Areas", path: "/service-areas" }])],
     summary: [`Towns covered: ${serviceAreaTowns.join(", ")}.`],
   },
+  ...locationPages.map((page): Route => {
+    const path = `/service-areas/${page.slug}`;
+    return {
+      path,
+      title: page.title,
+      description: page.description,
+      priority: 0.8,
+      changefreq: "monthly",
+      schema: [
+        localBusinessSchema(),
+        breadcrumbSchema([
+          { name: "Service Areas", path: "/service-areas" },
+          { name: page.town, path },
+        ]),
+        faqSchema(page.faqs),
+      ],
+      summary: [
+        page.h1,
+        ...page.opening,
+        ...page.appliance.paragraphs,
+        ...page.hvac.paragraphs,
+        ...page.visit.steps.map((step) => `${step.title}: ${step.body}`),
+        ...page.why.paragraphs,
+        `Nearby: ${page.nearby.towns.join(", ")}.`,
+        ...page.faqs.map((item) => `${item.q} ${item.a}`),
+        page.closing,
+      ],
+    };
+  }),
   {
     path: "/book",
     ...seo.book,
@@ -147,6 +294,21 @@ const routes: Route[] = [
       ),
     ],
   },
+  {
+    path: "/warranty",
+    ...seo.warranty,
+    priority: 0.5,
+    changefreq: "yearly",
+    schema: [breadcrumbSchema([{ name: "Warranty", path: "/warranty" }])],
+    summary: [
+      `Last updated ${warranty.updated}.`,
+      warranty.intro,
+      ...warranty.sections.map(
+        (x) =>
+          `${x.heading}: ${[...x.body, ...(("list" in x && x.list) || [])].join(" ")}`,
+      ),
+    ],
+  },
 ];
 
 for (const r of routes) {
@@ -171,8 +333,8 @@ function headFor(r: Route) {
     `<meta property="og:type" content="website" />`,
     `<meta property="og:site_name" content="${esc(company.name)}" />`,
     `<meta property="og:locale" content="${site.locale}" />`,
-    `<meta property="og:title" content="${esc(r.title)}" />`,
-    `<meta property="og:description" content="${esc(r.description)}" />`,
+    `<meta property="og:title" content="${esc(r.ogTitle ?? r.title)}" />`,
+    `<meta property="og:description" content="${esc(r.ogDescription ?? r.description)}" />`,
     `<meta property="og:url" content="${url}" />`,
     `<meta property="og:image" content="${image}" />`,
     `<meta property="og:image:width" content="1200" />`,

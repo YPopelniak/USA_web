@@ -7,6 +7,7 @@ import { About } from "@/sections/About";
 import { Process } from "@/sections/Process";
 import { Equipment } from "@/sections/Equipment";
 import { WhyUs } from "@/sections/WhyUs";
+import { Credentials } from "@/sections/Credentials";
 import { GoogleReviews } from "@/sections/GoogleReviews";
 import { Faq } from "@/sections/Faq";
 import { FinalCta } from "@/sections/FinalCta";
@@ -32,6 +33,7 @@ export default function AboutPage() {
         crumbs={[{ label: "About" }]}
       />
       <About />
+      <Credentials />
       <WhyUs />
       <Equipment />
       <Process />
