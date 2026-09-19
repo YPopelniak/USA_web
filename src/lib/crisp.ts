@@ -31,16 +31,68 @@ const websiteId =
 export const isConfigured = Boolean(websiteId);
 
 let injected = false;
+let liftObserver: MutationObserver | null = null;
+
+/** Sit the round launcher above the sticky Call / Book bar on small screens. */
+export function liftCrispAboveSticky() {
+  const client = document.querySelector(".crisp-client");
+  if (!client) return false;
+
+  const mobile = window.matchMedia("(max-width: 1023px)").matches;
+  const bottom = mobile
+    ? "calc(var(--sticky-cta-height) + 12px)"
+    : "";
+
+  for (const el of client.querySelectorAll<HTMLElement>("*")) {
+    const style = el.style.position || window.getComputedStyle(el).position;
+    if (style !== "fixed") continue;
+    const { width, height } = el.getBoundingClientRect();
+    if (width < 36 || width > 88 || height < 36 || height > 88) continue;
+    if (bottom) el.style.setProperty("bottom", bottom, "important");
+    else el.style.removeProperty("bottom");
+  }
+
+  return true;
+}
+
+function watchCrispPosition() {
+  const run = () => liftCrispAboveSticky();
+  run();
+  window.addEventListener("resize", run);
+
+  const client = document.querySelector(".crisp-client");
+  if (client && !liftObserver) {
+    liftObserver = new MutationObserver(run);
+    liftObserver.observe(client, {
+      attributes: true,
+      childList: true,
+      subtree: true,
+    });
+  }
+}
 
 export function loadCrisp() {
   if (!websiteId || injected) return;
   injected = true;
 
-  window.$crisp = [];
+  const queue: unknown[] = [];
+  window.$crisp = queue;
   window.CRISP_WEBSITE_ID = websiteId;
+  queue.push(["on", "session:loaded", () => watchCrispPosition()]);
 
   const script = document.createElement("script");
   script.src = "https://client.crisp.chat/l.js";
   script.async = true;
+  script.onload = () => {
+    const deadline = Date.now() + 20000;
+    const tick = () => {
+      if (liftCrispAboveSticky()) {
+        watchCrispPosition();
+        return;
+      }
+      if (Date.now() < deadline) window.setTimeout(tick, 300);
+    };
+    tick();
+  };
   document.head.appendChild(script);
 }

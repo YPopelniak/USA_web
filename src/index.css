@@ -224,6 +224,12 @@
   background: var(--color-brand-500);
 }
 
+@media (max-width: 1023px) {
+  .crisp-client [aria-label] {
+    bottom: calc(var(--sticky-cta-height) + 12px) !important;
+  }
+}
+
 /* One motion vocabulary for the whole site: same curve, three durations.
    Exponential ease-out — fast start, long settle, no bounce. */
 @theme {

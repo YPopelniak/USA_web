@@ -43,7 +43,7 @@ export function CrispChat() {
   return (
     <div
       data-crisp-chat
-      className="fixed bottom-[calc(var(--sticky-cta-height)+1.25rem)] right-5 z-50 flex flex-col items-end gap-3"
+      className="fixed bottom-[calc(var(--sticky-cta-height)+1.75rem)] right-4 z-50 flex flex-col items-end gap-3 lg:bottom-5 lg:right-5"
     >
       <AnimatePresence>
         {open && (
