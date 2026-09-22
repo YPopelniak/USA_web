@@ -55,10 +55,11 @@ export const hero = {
 };
 
 export const about = {
+  eyebrow: "Trusted local experts",
   title: "Appliance and HVAC work, handled by one company",
   body: [
     "USA Appliance & HVAC has spent seven years on appliance and HVAC equipment across Chicago and the surrounding areas — residential kitchens and laundry, and the professional-grade refrigeration and cooking equipment that restaurants and managed property run on.",
-    "We help residential and commercial customers diagnose equipment problems, understand their repair options, and restore comfort and functionality as quickly as possible. We are licensed and insured in Illinois. Refrigerant work is performed by EPA Section 608 certified technicians, and installed replacement parts carry a written 60-day parts warranty.",
+    "We help residential and commercial customers diagnose equipment problems, understand their repair options, and restore comfort and functionality as quickly as possible.",
   ],
   cta: { label: "About us", to: "/about" },
   stats: [
@@ -68,6 +69,12 @@ export const about = {
     { value: "Residential", label: "& commercial customers" },
     { value: "All major", label: "Brands serviced" },
   ],
+  assurances: [
+    "Licensed & insured in Illinois",
+    "EPA Section 608 certified technicians",
+    "60-day parts warranty",
+  ],
+  tagline: "Same people. Greater comfort.",
 };
 
 export const process = {
@@ -793,7 +800,7 @@ export const site = {
    */
   url: "https://usaappliancehvac.com",
   locale: "en_US",
-  ogImage: "/og-cover.jpg",
+  ogImage: "/og-cover.jpg?v=2",
   twitterHandle: "",
 } as const;
 
