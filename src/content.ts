@@ -436,7 +436,6 @@ export const equipmentServiced = {
         "Ductless mini-splits",
         "Heat pumps",
         "Thermostats",
-        "Ductwork",
       ],
     },
     {
@@ -788,17 +787,18 @@ export const warranty = {
   ],
 };
 
+/** Preferred production origin. The apex redirects here. */
+export const SITE_URL = "https://www.usaappliancehvac.com";
+
 export const site = {
   /*
-   * The apex is canonical.
+   * www is canonical.
    *
-   * Vercel is configured with www 308-redirecting to the apex, so this must
-   * match: a canonical pointing at a URL that redirects is a needless hop and
-   * tells crawlers one thing while the server does another. If the primary is
-   * ever flipped back to www in Vercel, flip this line with it — they are one
-   * decision, not two.
+   * Production redirects https://usaappliancehvac.com/* to this host. Canonicals,
+   * Open Graph, JSON-LD, the sitemap, and robots.txt must use the same origin,
+   * or Google indexes a URL that immediately redirects.
    */
-  url: "https://usaappliancehvac.com",
+  url: SITE_URL,
   locale: "en_US",
   ogImage: "/og-cover.jpg?v=2",
   twitterHandle: "",
