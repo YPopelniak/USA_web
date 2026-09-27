@@ -787,16 +787,16 @@ export const warranty = {
   ],
 };
 
-/** Preferred production origin. The apex redirects here. */
-export const SITE_URL = "https://www.usaappliancehvac.com";
+/** Preferred production origin. www redirects here. */
+export const SITE_URL = "https://usaappliancehvac.com";
 
 export const site = {
   /*
-   * www is canonical.
+   * The apex is canonical.
    *
-   * Production redirects https://usaappliancehvac.com/* to this host. Canonicals,
-   * Open Graph, JSON-LD, the sitemap, and robots.txt must use the same origin,
-   * or Google indexes a URL that immediately redirects.
+   * Canonicals, Open Graph, JSON-LD, the sitemap, and robots.txt must use this
+   * origin. A sitemap URL that redirects is what Search Console reports as
+   * "Couldn't fetch".
    */
   url: SITE_URL,
   locale: "en_US",
