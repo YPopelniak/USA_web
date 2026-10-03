@@ -1,4 +1,4 @@
-import { CalendarCheck, PhoneCall } from "lucide-react";
+import { CalendarCheck, PhoneCall, type LucideIcon } from "lucide-react";
 import { useCallbackModal } from "./CallbackModal";
 import { bookingLabel, bookingUrl, isConfigured } from "@/lib/booking";
 import { cn } from "@/lib/utils";
@@ -23,18 +23,20 @@ const styles: Record<Variant, string> = {
 export function BookButton({
   label,
   topic,
+  icon,
   variant = "solid",
   size = "md",
   className,
 }: {
   label?: string;
   topic?: string;
+  icon?: LucideIcon;
   variant?: Variant;
   size?: "md" | "lg";
   className?: string;
 }) {
   const { open } = useCallbackModal();
-  const Icon = isConfigured ? CalendarCheck : PhoneCall;
+  const Icon = icon ?? (isConfigured ? CalendarCheck : PhoneCall);
 
   const classes = cn(
     "inline-flex items-center justify-center gap-2.5 rounded-[var(--radius-action)] font-semibold transition-all active:scale-[0.98] whitespace-nowrap",
@@ -45,7 +47,7 @@ export function BookButton({
 
   const inner = (
     <>
-      <Icon className="size-4" aria-hidden="true" />
+      <Icon className="size-4" strokeWidth={1.75} aria-hidden="true" />
       {label ?? bookingLabel}
     </>
   );

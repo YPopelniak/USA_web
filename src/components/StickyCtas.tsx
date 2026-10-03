@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { BookButton } from "./BookButton";
 import { CallButton } from "./CallButton";
+import { useCallbackModal } from "./CallbackModal";
 
 function topicFromPath(path: string) {
   if (path.includes("refrigerator-repair")) return "Refrigerator repair";
@@ -22,6 +23,8 @@ function topicFromPath(path: string) {
  */
 export function StickyCtas() {
   const { pathname } = useLocation();
+  const { isOpen } = useCallbackModal();
+  if (isOpen) return null;
 
   return (
     <div

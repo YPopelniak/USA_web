@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { MessageCircle, Send, X } from "lucide-react";
 import { crisp as copy, company } from "@/content";
 import { isConfigured, loadCrisp } from "@/lib/crisp";
+import { useCallbackModal } from "./CallbackModal";
 
 type Msg = { from: "them" | "me"; text: string };
 
@@ -11,6 +12,7 @@ type Msg = { from: "them" | "me"; text: string };
  * once VITE_CRISP_WEBSITE_ID exists, the real widget loads instead.
  */
 export function CrispChat() {
+  const { isOpen: bookingOpen } = useCallbackModal();
   const [open, setOpen] = useState(false);
   const [everOpened, setEverOpened] = useState(false);
   const [draft, setDraft] = useState("");
@@ -22,7 +24,7 @@ export function CrispChat() {
     if (isConfigured) loadCrisp();
   }, []);
 
-  if (isConfigured) return null;
+  if (isConfigured || bookingOpen) return null;
 
   function send() {
     const text = draft.trim();

@@ -9,6 +9,7 @@ import { FinalCta } from "@/sections/FinalCta";
 import { useSeo } from "@/lib/seo";
 import { breadcrumbSchema, faqSchema, localBusinessSchema } from "@/lib/schema";
 import { getLocationPage, locationPagePath, site } from "@/content";
+import chicagoSkyline from "@/assets/photos/why-us-chicago.webp";
 import NotFound from "./NotFound";
 
 function Prose({ children }: { children: string[] }) {
@@ -82,10 +83,18 @@ export default function LocationPage() {
           { label: "Service Areas", to: "/service-areas" },
           { label: page.town },
         ]}
+        backgroundImage={chicagoSkyline}
+        backgroundAlt=""
       >
-        <div className="flex flex-wrap gap-3">
-          <BookButton label="Book online" />
-          <CallButton />
+        <div className="grid w-full grid-cols-2 gap-2 sm:flex sm:w-auto sm:flex-wrap sm:gap-3">
+          <BookButton
+            label="Book online"
+            className="w-full px-2.5 text-[14px] sm:w-auto sm:px-6 sm:text-[15px]"
+          />
+          <CallButton
+            variant="quiet"
+            className="w-full px-2.5 text-[14px] sm:w-auto sm:px-6 sm:text-[15px]"
+          />
         </div>
       </PageHero>
 
@@ -239,9 +248,12 @@ export default function LocationPage() {
           <p className="mx-auto max-w-[54ch] text-center text-[17px] leading-relaxed text-ink-muted">
             {page.closing}
           </p>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <BookButton label="Book online" />
-            <CallButton />
+          <div className="mx-auto mt-6 grid w-full max-w-md grid-cols-2 gap-2 sm:flex sm:max-w-none sm:justify-center sm:gap-3">
+            <BookButton
+              label="Book online"
+              className="w-full px-2.5 text-[14px] sm:w-auto sm:px-6 sm:text-[15px]"
+            />
+            <CallButton className="w-full px-2.5 text-[14px] sm:w-auto sm:px-6 sm:text-[15px]" />
           </div>
         </Reveal>
       </section>

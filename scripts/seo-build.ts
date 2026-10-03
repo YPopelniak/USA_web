@@ -33,7 +33,10 @@ import {
   site,
   whyUs,
 } from "../src/content";
+import { servicePagePath, servicePages } from "../src/service-pages";
+import { blogPosts } from "../src/blog";
 import {
+  articleSchema,
   breadcrumbSchema,
   faqSchema,
   localBusinessSchema,
@@ -258,6 +261,46 @@ const routes: Route[] = [
     };
   }),
   {
+    path: "/blog",
+    ...seo.blog,
+    priority: 0.6,
+    changefreq: "monthly",
+    schema: [breadcrumbSchema([{ name: "Blog", path: "/blog" }])],
+    summary: [
+      "Blog posts on industry conferences, heat pumps, newer refrigerants, repair decisions, and appliance error codes.",
+      ...blogPosts.map((post) => `${post.title}: ${post.excerpt}`),
+    ],
+  },
+  ...blogPosts.map(
+    (post): Route => ({
+      path: `/blog/${post.slug}`,
+      title: post.seoTitle,
+      description: post.description,
+      priority: 0.6,
+      changefreq: "yearly",
+      schema: [
+        articleSchema({
+          title: post.title,
+          description: post.description,
+          path: `/blog/${post.slug}`,
+          date: post.date,
+        }),
+        breadcrumbSchema([
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ]),
+      ],
+      summary: [
+        post.excerpt,
+        ...post.sections.flatMap((section) => [
+          section.heading,
+          ...section.paragraphs,
+          ...(section.list ?? []),
+        ]),
+      ],
+    }),
+  ),
+  {
     path: "/book",
     ...seo.book,
     priority: 0.9,
@@ -294,6 +337,33 @@ const routes: Route[] = [
       ),
     ],
   },
+  ...servicePages.map((page): Route => {
+    const path = servicePagePath(page);
+    const group = serviceGroups.find((item) => item.slug === page.groupSlug);
+    return {
+      path,
+      title: page.seoTitle,
+      description: page.description,
+      priority: 0.8,
+      changefreq: "monthly",
+      schema: [
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": `${site.url}${path}#service`,
+          name: page.title,
+          description: page.description,
+          url: site.url + path,
+          provider: { "@id": `${site.url}/#business` },
+        },
+        breadcrumbSchema([
+          { name: group?.navLabel ?? "Services", path: `/${page.groupSlug}` },
+          { name: page.title, path },
+        ]),
+      ],
+      summary: [...page.paragraphs, ...(page.note ? [page.note] : []), ...page.includes],
+    };
+  }),
   {
     path: "/warranty",
     ...seo.warranty,

@@ -45,7 +45,10 @@ export function AvailabilityPopup() {
   const callbackOpenRef = useRef(callbackOpen);
   callbackOpenRef.current = callbackOpen;
 
-  const onBookingRoute = pathname === "/book" || pathname === "/contact";
+  const onBookingRoute =
+    pathname === "/book" ||
+    pathname === "/contact" ||
+    pathname === "/blog/appliance-hvac-conferences";
 
   const suppressMain = () => {
     sessionStorage.setItem(MAIN_SUPPRESS_KEY, "true");
@@ -155,7 +158,7 @@ export function AvailabilityPopup() {
     };
   }, [mainOfferOpen]);
 
-  const showTeaser = teaserOpen && !mainOfferOpen && !callbackOpen;
+  const showTeaser = teaserOpen && !mainOfferOpen && !callbackOpen && !onBookingRoute;
 
   return (
     <AnimatePresence>

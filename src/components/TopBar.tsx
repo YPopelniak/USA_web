@@ -22,8 +22,27 @@ function Diamond() {
   return (
     <span
       aria-hidden="true"
-      className="mx-5 inline-block size-1 shrink-0 rotate-45 bg-white/50"
+      className="mx-5 hidden size-1 shrink-0 rotate-45 bg-white/50 lg:inline-block"
     />
+  );
+}
+
+function HoursStatus({ hours }: { hours: ReturnType<typeof useOpenState> }) {
+  return (
+    <span className="inline-flex items-center gap-2">
+      <span
+        className={cn(
+          "relative inline-flex size-1.5 shrink-0 rounded-full",
+          hours.open ? "bg-emerald-500" : "bg-ink-muted/40",
+        )}
+      >
+        {hours.open && (
+          <span className="status-pulse absolute inset-0 rounded-full bg-emerald-500" />
+        )}
+      </span>
+      <span className="text-white">{hours.label}</span>
+      <span className="text-white/80">· {hours.detail}</span>
+    </span>
   );
 }
 
@@ -31,30 +50,19 @@ export function TopBar() {
   const hours = useOpenState();
 
   return (
-    <div className="hidden border-b border-white/10 bg-[#203247] text-[13px] text-white/80 lg:block">
-      <div className="container-page flex h-11 items-center justify-between">
-        <p className="flex items-center">
+    <div className="border-b border-white/10 bg-[#203247] text-[12px] text-white/80 sm:text-[13px]">
+      <div className="container-page flex flex-col items-center gap-1 py-2.5 text-center lg:h-11 lg:flex-row lg:justify-between lg:py-0 lg:text-left">
+        <p className="flex flex-col items-center gap-1 lg:flex-row lg:gap-0">
           <span>{company.address}</span>
           <Diamond />
-          <span className="inline-flex items-center gap-2">
-            <span
-              className={cn(
-                "relative inline-flex size-1.5 shrink-0 rounded-full",
-                hours.open ? "bg-emerald-500" : "bg-ink-muted/40",
-              )}
-            >
-              {hours.open && (
-                <span className="status-pulse absolute inset-0 rounded-full bg-emerald-500" />
-              )}
-            </span>
-            <span className="text-white">{hours.label}</span>
-            <span className="text-white/80">· {hours.detail}</span>
-          </span>
+          <HoursStatus hours={hours} />
+          <Diamond />
+          <span>Taking requests 24/7</span>
           <Diamond />
           <span>Licensed &amp; insured in Illinois · EPA 608</span>
         </p>
 
-        <ul className="flex items-center gap-4">
+        <ul className="hidden items-center gap-4 lg:flex">
           {company.socials.map((s) => (
             <li key={s.label}>
               <a

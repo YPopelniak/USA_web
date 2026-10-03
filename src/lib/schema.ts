@@ -211,6 +211,29 @@ export function faqSchema(items: readonly LocationFaq[] = faqs) {
   };
 }
 
+export function articleSchema(post: {
+  title: string;
+  description: string;
+  path: string;
+  date: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    dateModified: post.date,
+    mainEntityOfPage: site.url + post.path,
+    author: {
+      "@type": "Organization",
+      name: company.name,
+      url: site.url,
+    },
+    publisher: { "@id": `${site.url}/#business` },
+  };
+}
+
 export function breadcrumbSchema(trail: Array<{ name: string; path: string }>) {
   return {
     "@context": "https://schema.org",

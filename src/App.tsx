@@ -23,6 +23,10 @@ import Book from "@/pages/Book";
 import Contact from "@/pages/Contact";
 import Privacy from "@/pages/Privacy";
 import Warranty from "@/pages/Warranty";
+import BlogIndex from "@/pages/BlogIndex";
+import BlogPost from "@/pages/BlogPost";
+import ChicagoBuild from "@/pages/ChicagoBuild";
+import ServiceDetail from "@/pages/ServiceDetail";
 import NotFound from "@/pages/NotFound";
 
 export default function App() {
@@ -50,6 +54,9 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/warranty" element={<Warranty />} />
+          <Route path="/blog" element={<BlogIndex />} />
+          <Route path="/blog/appliance-hvac-conferences" element={<ChicagoBuild />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route
             path="/appliance-repair/refrigerator-repair"
             element={<RefrigeratorRepair />}
@@ -66,6 +73,7 @@ export default function App() {
             path="/appliance-repair/oven-stove-repair"
             element={<OvenStoveRepair />}
           />
+          <Route path="/:group/:service" element={<ServiceDetail />} />
           <Route path="/:group" element={<ServiceCategory />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

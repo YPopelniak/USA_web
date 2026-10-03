@@ -4,11 +4,13 @@ import { cn } from "@/lib/utils";
 
 /** Call Now. The number is always the literal number — never a tracking label. */
 export function CallButton({
+  label,
   variant = "outline",
   size = "md",
   showNumber = true,
   className,
 }: {
+  label?: string;
   variant?: "solid" | "outline" | "light" | "quiet";
   size?: "md" | "lg";
   showNumber?: boolean;
@@ -31,8 +33,8 @@ export function CallButton({
         className,
       )}
     >
-      <Phone className="size-4" aria-hidden="true" />
-      {showNumber ? company.phone : "Call Now"}
+      <Phone className="size-4" strokeWidth={1.75} aria-hidden="true" />
+      {label ?? (showNumber ? company.phone : "Call Now")}
     </a>
   );
 }
