@@ -313,11 +313,10 @@ const routes: Route[] = [
     ...seo.contact,
     priority: 0.9,
     changefreq: "monthly",
-    schema: [localBusinessSchema(), breadcrumbSchema([{ name: "Contact", path: "/contact" }]), faqSchema()],
+    schema: [localBusinessSchema(), breadcrumbSchema([{ name: "Contact", path: "/contact" }])],
     summary: [
-      `Call ${company.phone}. Email ${company.email}. Address: ${company.address}.`,
-      `${company.hours}. Service area: ${serviceAreaTowns.join(", ")}.`,
-      ...faqs.map((f) => `${f.q} ${f.a}`),
+      `Call ${company.phone} or email ${company.email}.`,
+      `${company.hours}. Service area: ${company.address}.`,
     ],
   },
   {

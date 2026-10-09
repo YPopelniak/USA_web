@@ -1,23 +1,16 @@
 import { useMemo } from "react";
 import { useSeo } from "@/lib/seo";
-import { seo } from "@/content";
-import { breadcrumbSchema, faqSchema, localBusinessSchema } from "@/lib/schema";
+import { company, seo } from "@/content";
+import { breadcrumbSchema, localBusinessSchema } from "@/lib/schema";
 import { PageHero } from "@/components/PageHero";
 import { ContactForm } from "@/sections/ContactForm";
-import { ContactBand } from "@/sections/ContactBand";
-import { Faq } from "@/sections/Faq";
-import { FinalCta } from "@/sections/FinalCta";
-import { BookButton } from "@/components/BookButton";
-import { ServiceMap } from "@/components/ServiceMap";
-import { Reveal } from "@/components/Reveal";
-import { company } from "@/content";
+import chicagoSkyline from "@/assets/photos/why-us-chicago.webp";
 
 export default function Contact() {
   const schema = useMemo(
     () => [
       localBusinessSchema(),
       breadcrumbSchema([{ name: "Contact", path: "/contact" }]),
-      faqSchema(),
     ],
     [],
   );
@@ -26,27 +19,19 @@ export default function Contact() {
   return (
     <>
       <PageHero
-        kicker="Contact us"
-        title="Tell us what broke"
-        body={`We cover ${company.serviceArea}. Send the form, request a callback, or just call — all three reach the same crew.`}
+        kicker="Contact"
+        title="Call or send a message"
+        body={`Same crew either way. ${company.hours}.`}
         crumbs={[{ label: "Contact" }]}
-      >
-        <BookButton variant="solid" />
-      </PageHero>
+        backgroundImage={chicagoSkyline}
+        backgroundAlt=""
+        imagePosition="center 46%"
+        softScrim
+      />
 
-      <div className="container-page py-16 lg:py-24">
-        <ContactForm />
+      <div className="container-page py-12 lg:py-16">
+        <ContactForm showIntro={false} />
       </div>
-
-      <section className="container-page pb-16">
-        <Reveal>
-          <ServiceMap />
-        </Reveal>
-      </section>
-
-      <ContactBand />
-      <Faq />
-      <FinalCta />
     </>
   );
 }

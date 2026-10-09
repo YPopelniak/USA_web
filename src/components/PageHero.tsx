@@ -12,6 +12,8 @@ export function PageHero({
   children,
   backgroundImage,
   backgroundAlt = "",
+  imagePosition = "center 58%",
+  softScrim = false,
 }: {
   kicker: string;
   title: string;
@@ -21,6 +23,10 @@ export function PageHero({
   /** Full-bleed photo behind the hero. Text switches to white so it stays readable. */
   backgroundImage?: string;
   backgroundAlt?: string;
+  /** CSS object-position for the background photo. */
+  imagePosition?: string;
+  /** Lighter gradient so more of the photo stays visible. */
+  softScrim?: boolean;
 }) {
   const onPhoto = Boolean(backgroundImage);
   const content = (
@@ -106,12 +112,28 @@ export function PageHero({
             src={backgroundImage}
             alt={backgroundAlt}
             aria-hidden={backgroundAlt ? undefined : true}
-            className="absolute inset-0 -z-10 size-full object-cover object-[center_58%]"
+            style={{ objectPosition: imagePosition }}
+            className="absolute inset-0 -z-10 size-full object-cover"
           />
-          <div aria-hidden="true" className="absolute inset-0 -z-10 bg-ink/40" />
+          <div
+            aria-hidden="true"
+            className={
+              softScrim
+                ? "absolute inset-0 -z-10 bg-gradient-to-b from-ink/60 via-ink/25 to-ink/45"
+                : "absolute inset-0 -z-10 bg-ink/40"
+            }
+          />
         </>
       )}
-      <div className={onPhoto ? "container-page py-10 sm:py-14 lg:py-20" : "container-page py-14 lg:py-20"}>{content}</div>
+      <div
+        className={
+          onPhoto
+            ? "container-page min-h-[240px] py-10 sm:min-h-[320px] sm:py-14 lg:py-16"
+            : "container-page py-14 lg:py-20"
+        }
+      >
+        {content}
+      </div>
     </section>
   );
 }

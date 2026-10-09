@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AlertCircle, CheckCircle2, Clock, Loader2, MapPin, Phone } from "lucide-react";
+import { AlertCircle, CheckCircle2, Clock, Loader2, Mail, MapPin, Phone } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { allServices, company, contactSection } from "@/content";
 import { FormConsent } from "@/components/FormConsent";
@@ -28,7 +28,7 @@ function validate(v: Lead): Errors {
 const fieldBase =
   "w-full rounded-none border bg-white px-4 py-3.5 text-[15px] outline-none transition-colors placeholder:text-ink-muted/50";
 
-export function ContactForm() {
+export function ContactForm({ showIntro = true }: { showIntro?: boolean }) {
   const [values, setValues] = useState<Lead>(empty);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<Status>("idle");
@@ -72,12 +72,16 @@ export function ContactForm() {
     <section id="contact" className="w-full">
       <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
         <Reveal>
-          <h2 className="type-title text-[32px] sm:text-[42px] max-w-sm">{contactSection.title}</h2>
-          <p className="mt-5 max-w-sm text-[16px] leading-relaxed text-ink-muted">
-            {contactSection.body}
-          </p>
+          {showIntro && (
+            <>
+              <h2 className="type-title max-w-sm text-[32px] sm:text-[42px]">{contactSection.title}</h2>
+              <p className="mt-5 max-w-sm text-[16px] leading-relaxed text-ink-muted">
+                {contactSection.body}
+              </p>
+            </>
+          )}
 
-          <ul className="mt-9 space-y-5">
+          <ul className={showIntro ? "mt-9 space-y-5" : "space-y-5 lg:pt-2"}>
             <li>
               <a
                 href={company.phoneHref}
@@ -97,6 +101,21 @@ export function ContactForm() {
               </a>
             </li>
             <li>
+              <a href={company.emailHref} className="group flex items-start gap-4">
+                <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-none bg-brand-50 text-brand-600">
+                  <Mail className="size-5" aria-hidden="true" />
+                </span>
+                <span>
+                  <span className="block text-[13px] font-semibold uppercase tracking-[0.1em] text-ink-muted">
+                    Email
+                  </span>
+                  <span className="block text-[17px] font-semibold transition-colors group-hover:text-brand-600">
+                    {company.email}
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li>
               <a
                 href={company.mapHref}
                 target="_blank"
@@ -108,7 +127,7 @@ export function ContactForm() {
                 </span>
                 <span>
                   <span className="block text-[13px] font-semibold uppercase tracking-[0.1em] text-ink-muted">
-                    Visit
+                    Area
                   </span>
                   <span className="block text-[17px] font-semibold transition-colors group-hover:text-brand-600">
                     {company.address}
