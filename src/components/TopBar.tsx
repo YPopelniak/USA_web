@@ -53,11 +53,11 @@ export function TopBar() {
     <div className="border-b border-white/10 bg-[#203247] text-[12px] text-white/80 sm:text-[13px]">
       <div className="container-page flex flex-col items-center gap-1 py-2.5 text-center lg:h-11 lg:flex-row lg:justify-between lg:py-0 lg:text-left">
         <p className="flex flex-col items-center gap-1 lg:flex-row lg:gap-0">
-          <span>{company.address}</span>
+          <span className="hidden lg:inline">{company.address}</span>
           <Diamond />
           <HoursStatus hours={hours} />
           <Diamond />
-          <span>Taking requests 24/7</span>
+          <span className="hidden lg:inline">Taking requests 24/7</span>
           <Diamond />
           <span>Licensed &amp; insured in Illinois · EPA 608</span>
         </p>
