@@ -838,13 +838,15 @@ export const serviceAreaTowns = [
   "Evanston",
   "Skokie",
   "Niles",
+  "Norridge",
   "Park Ridge",
   "Des Plaines",
   "Franklin Park",
-  "Schiller Park",
   "Mount Prospect",
   "Arlington Heights",
   "Palatine",
+  "Barrington",
+  "Deer Park",
   "Schaumburg",
   "Rolling Meadows",
   "Hoffman Estates",
@@ -854,10 +856,10 @@ export const serviceAreaTowns = [
   "Northbrook",
   "Glenview",
   "Morton Grove",
-  "Oak Park",
-  "Cicero",
-  "Berwyn",
-  "Naperville",
+  "Addison",
+  "Carol Stream",
+  "Wheaton",
+  "Oak Brook",
 ] as const;
 
 export function townToSlug(town: string) {
@@ -929,11 +931,13 @@ const neighborGroups: readonly (readonly string[])[] = [
   ["Chicago", "The Loop", "River North", "Gold Coast", "Streeterville", "West Loop"],
   ["Lincoln Park", "Lakeview", "Wicker Park", "Logan Square", "Chicago"],
   ["Evanston", "Skokie", "Niles", "Morton Grove", "Glenview", "Northbrook", "Park Ridge"],
-  ["Des Plaines", "Park Ridge", "Franklin Park", "Schiller Park", "Niles", "Mount Prospect"],
+  ["Des Plaines", "Park Ridge", "Franklin Park", "Norridge", "Niles", "Mount Prospect"],
   [
     "Arlington Heights",
     "Mount Prospect",
     "Palatine",
+    "Barrington",
+    "Deer Park",
     "Schaumburg",
     "Rolling Meadows",
     "Hoffman Estates",
@@ -942,8 +946,7 @@ const neighborGroups: readonly (readonly string[])[] = [
     "Wheeling",
     "Des Plaines",
   ],
-  ["Oak Park", "Cicero", "Berwyn", "Chicago"],
-  ["Naperville", "Oak Park", "Berwyn"],
+  ["Addison", "Carol Stream", "Wheaton", "Oak Brook", "Elk Grove Village", "Schaumburg"],
 ];
 
 function nearbyTowns(town: string) {
@@ -1802,32 +1805,6 @@ export const locationPages: LocationPageCopy[] = [
     closing: `Need a Franklin Park appliance, furnace, or cooler looked at? Call ${company.phone} or book online.`,
   }),
   locationPage({
-    town: "Schiller Park",
-    zips: ["60176"],
-    title: "Appliance & HVAC Repair in Schiller Park, IL | USA HVAC",
-    description:
-      "Appliance and HVAC repair in Schiller Park, IL. Diagnosis first, then a written price. Houses near the industrial corridor. Book online.",
-    opening: [
-      "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Schiller Park, including ZIP code 60176.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls in the village neighborhoods between the rail lines and O'Hare's edge.",
-      `Call ${company.phone} or book online.`,
-    ],
-    appliance: [
-      "We repair refrigerators, freezers, ice makers, washers, dryers, and dishwashers. We also repair ovens, stoves, ranges, cooktops, range hoods, and garbage disposals.",
-      `If you need a hookup, appliance installation is part of the same work. ${applianceBrandSentence}`,
-      "Small village kitchens and nearby commercial coolers are both in range. Tell us which one failed so the first visit is the right visit.",
-    ],
-    hvac: [
-      "We repair furnaces and air conditioners. Houses here are mostly mid-century, close to the industrial and airport corridor. Outdoor coils collect dirt faster than in a quiet subdivision.",
-      "Weak cooling is often a dirty coil or a failed capacitor. We clean and test before we talk about a compressor. Brands include Carrier, Trane, and Mitsubishi. Refrigerant work is performed by EPA Section 608 certified technicians.",
-    ],
-    uniqueFaq: {
-      q: "Our condenser sits near a busy road and barely cools. Is that something you clean and test?",
-      a: "Yes. We check the coil, the capacitor, and the airflow before we quote a major part. You approve the written price before any repair.",
-    },
-    closing: `Need a Schiller Park air conditioner or appliance looked at? Call ${company.phone} or book online.`,
-  }),
-  locationPage({
     town: "Northbrook",
     zips: ["60062"],
     title: "Appliance & HVAC Repair in Northbrook, IL | USA HVAC",
@@ -1904,110 +1881,6 @@ export const locationPages: LocationPageCopy[] = [
       a: "Often, if the fault is a common heating part or a vent we can clear and the part is on the van. You still approve a written price before we repair it.",
     },
     closing: `Need a Morton Grove dryer, dishwasher, or furnace looked at? Call ${company.phone} or book online.`,
-  }),
-  locationPage({
-    town: "Oak Park",
-    zips: ["60301", "60302"],
-    title: "Appliance & HVAC Repair in Oak Park, IL | USA HVAC",
-    description:
-      "Appliance and HVAC repair in Oak Park, IL. Diagnosis first, then a written price. Brick homes, two-flats, and condos. Book online.",
-    opening: [
-      "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Oak Park, including ZIP codes 60301 and 60302.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls in the brick houses, two-flats, and condos from downtown to the residential streets.",
-      `Call ${company.phone} or book online.`,
-    ],
-    appliance: [
-      "We repair refrigerators, freezers, ice makers, washers, dryers, and dishwashers. We also repair ovens, stoves, ranges, cooktops, range hoods, and garbage disposals.",
-      `If you need a hookup, appliance installation is part of the same work. ${applianceBrandSentence}`,
-      "Older kitchens often added a dishwasher to a disposal that was never opened, and dryers vent through long brick chases. We inspect those before we replace a pump or an element.",
-    ],
-    hvac: [
-      "We repair furnaces and air conditioners. Many Oak Park houses were built for radiators or a small furnace. Central air, where it exists, was added later and does not always reach the third floor.",
-      "A ductless head is sometimes the honest fix for that top floor. We say so after we measure, not before. Brands include Carrier, Trane, and Mitsubishi. Refrigerant work is performed by EPA Section 608 certified technicians. If you smell gas, leave and call 911 or your gas utility.",
-    ],
-    uniqueFaq: {
-      q: "The third floor of our Oak Park house never cools. Do you only quote a new central system?",
-      a: "No. We check what the existing ducts can do first. If they cannot serve that floor, we will say whether a ductless head is the better spend. You approve any price before work starts.",
-    },
-    closing: `Need an Oak Park appliance or cooling problem looked at? Call ${company.phone} or book online.`,
-  }),
-  locationPage({
-    town: "Cicero",
-    zips: ["60804"],
-    title: "Appliance & HVAC Repair in Cicero, IL | USA HVAC",
-    description:
-      "Appliance and HVAC repair in Cicero, IL. Diagnosis first, then a written price. Bungalows, two-flats, and small businesses. Book online.",
-    opening: [
-      "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Cicero, including ZIP code 60804.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls in the bungalows and two-flats and at small commercial kitchens along the main streets.",
-      `Call ${company.phone} or book online.`,
-    ],
-    appliance: [
-      "We repair refrigerators, freezers, ice makers, washers, dryers, and dishwashers. We also repair ovens, stoves, ranges, cooktops, range hoods, and garbage disposals.",
-      `If you need a hookup, appliance installation is part of the same work. ${applianceBrandSentence} Commercial kitchen equipment uses the same crew.`,
-      "Bungalow laundries are often in the basement with a vent that has been there for decades. We check that vent when a dryer runs without heat.",
-    ],
-    hvac: [
-      "We repair furnaces and air conditioners. Many Cicero bungalows still heat with a basement furnace and cool with window units or a later central-air add-on.",
-      "We service the system you have. Brands include Carrier, Trane, and Mitsubishi. Refrigerant work is performed by EPA Section 608 certified technicians. If you smell gas, leave and call 911 or your gas utility.",
-    ],
-    uniqueFaq: {
-      q: "Do you work on bungalow furnaces in Cicero?",
-      a: "Yes. We diagnose ignition, airflow, and safety switches, then give a written repair-or-replace price. Nothing is replaced until you approve that number.",
-    },
-    closing: `Need a Cicero furnace, dryer, or refrigerator looked at? Call ${company.phone} or book online.`,
-  }),
-  locationPage({
-    town: "Berwyn",
-    zips: ["60402"],
-    title: "Appliance & HVAC Repair in Berwyn, IL | USA HVAC",
-    description:
-      "Appliance and HVAC repair in Berwyn, IL. Diagnosis first, then a written price. Bungalows, two-flats, and brick homes. Book online.",
-    opening: [
-      "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Berwyn, including ZIP code 60402.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls in the bungalow blocks and the brick two-flats.",
-      `Call ${company.phone} or book online.`,
-    ],
-    appliance: [
-      "We repair refrigerators, freezers, ice makers, washers, dryers, and dishwashers. We also repair ovens, stoves, ranges, cooktops, range hoods, and garbage disposals.",
-      `If you need a hookup, appliance installation is part of the same work. ${applianceBrandSentence}`,
-      "Brick bungalows often vent a dryer through a long masonry run. Heat dies in that pipe before it dies in the element. We look at the vent as part of the diagnosis.",
-    ],
-    hvac: [
-      "We repair furnaces and air conditioners. Basement furnaces in these bungalows are a regular kind of visit: tight access, original ducts, and a system that may have had central air added years later.",
-      "We measure temperature rise and airflow before we replace a control. Brands include Carrier, Trane, and Mitsubishi. If you smell gas, leave and call 911 or your gas utility.",
-    ],
-    uniqueFaq: {
-      q: "The dryer vent goes through a brick wall. Do you still take that call in Berwyn?",
-      a: "Yes. The vent is part of finding out why the dryer has no heat. We tell you what failed, and you approve the price before any repair.",
-    },
-    closing: `Need a Berwyn dryer, furnace, or dishwasher looked at? Call ${company.phone} or book online.`,
-  }),
-  locationPage({
-    town: "Naperville",
-    zips: ["60540", "60563", "60565"],
-    title: "Appliance & HVAC Repair in Naperville, IL | USA HVAC",
-    description:
-      "Appliance and HVAC repair in Naperville, IL. Diagnosis first, then a written price. Downtown and subdivision homes. Book online.",
-    opening: [
-      "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Naperville, including ZIP codes 60540, 60563, and 60565.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls downtown and in the subdivisions. This is the south end of our range. If a slot is too far for the day, we say so before we book it.",
-      `Call ${company.phone} or book online.`,
-    ],
-    appliance: [
-      "We repair refrigerators, freezers, ice makers, washers, dryers, and dishwashers. We also repair ovens, stoves, ranges, cooktops, range hoods, and garbage disposals.",
-      `If you need a hookup, appliance installation is part of the same work. ${applianceBrandSentence}`,
-      "Subdivision kitchens from the 1980s through the 2000s fail on ice makers, dishwashers, and laundry the same way closer-in houses do. The visit is still diagnosis first, then a written price.",
-    ],
-    hvac: [
-      "We repair furnaces and air conditioners. Many Naperville systems were installed with the house and are original high-efficiency equipment that now needs a repair-or-replace decision, not a guess.",
-      "We test the furnace and the air conditioner that are on site. Brands include Carrier, Trane, and Mitsubishi. Refrigerant work is performed by EPA Section 608 certified technicians.",
-    ],
-    uniqueFaq: {
-      q: "Is Naperville inside your normal service area?",
-      a: "Yes, including ZIP codes 60540, 60563, and 60565. It is farther than the northwest suburbs, so we confirm the opening before we promise a same-day window. The diagnostic fee does not go up because of the drive.",
-    },
-    closing: `Need a Naperville appliance or HVAC system looked at? Call ${company.phone} or book online.`,
   }),
 ];
 
