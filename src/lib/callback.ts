@@ -21,6 +21,7 @@ export type CallbackResult =
 /** "Book service" modal. Same inbox as the contact form, different subject. */
 export async function requestCallback(
   req: CallbackRequest,
+  captchaToken: string,
 ): Promise<CallbackResult> {
   const name = `${req.firstName} ${req.lastName}`.trim();
   const address = [req.street, req.unit, `${req.city}, ${req.state} ${req.zip}`, req.country]
@@ -46,6 +47,7 @@ export async function requestCallback(
       topic: req.topic,
     },
     `BOOKING — ${name} — ${req.topic} — ${req.city}`,
+    captchaToken,
   );
 
   if (!res.ok) return res;

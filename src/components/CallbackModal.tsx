@@ -13,6 +13,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { AlertCircle, Check, ChevronDown, Loader2, X } from "lucide-react";
 import { allServices, company } from "@/content";
 import { FormConsent } from "./FormConsent";
+import { RecaptchaField, type RecaptchaHandle } from "./RecaptchaField";
+import { CAPTCHA_REQUIRED } from "@/lib/recaptcha";
 import { requestCallback, type CallbackRequest } from "@/lib/callback";
 import { cn } from "@/lib/utils";
 
@@ -173,6 +175,8 @@ function CallbackModal({
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<Status>("idle");
   const [serverError, setServerError] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
+  const captchaRef = useRef<RecaptchaHandle>(null);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -220,6 +224,11 @@ function CallbackModal({
       first?.focus();
       return;
     }
+    if (!captchaToken) {
+      setServerError(CAPTCHA_REQUIRED);
+      setStatus("error");
+      return;
+    }
 
     setStatus("submitting");
     const payload: CallbackRequest = {
@@ -235,7 +244,7 @@ function CallbackModal({
       country: fields.country,
       topic: fields.service,
     };
-    const res = await requestCallback(payload);
+    const res = await requestCallback(payload, captchaToken);
 
     if (res.ok) {
       setStatus("success");
@@ -243,6 +252,7 @@ function CallbackModal({
     } else {
       setServerError(res.error);
       setStatus("error");
+      captchaRef.current?.reset();
     }
   }
 
@@ -464,6 +474,10 @@ function CallbackModal({
                       </option>
                     ))}
                   </SelectField>
+                </div>
+
+                <div className="mt-5">
+                  <RecaptchaField ref={captchaRef} onChange={setCaptchaToken} />
                 </div>
 
                 {status === "error" && (

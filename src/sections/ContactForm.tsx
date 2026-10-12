@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AlertCircle, CheckCircle2, Clock, Loader2, Mail, MapPin, Phone } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { allServices, company, contactSection } from "@/content";
 import { FormConsent } from "@/components/FormConsent";
+import { RecaptchaField, type RecaptchaHandle } from "@/components/RecaptchaField";
+import { CAPTCHA_REQUIRED } from "@/lib/recaptcha";
 import { submitLead, type Lead } from "@/lib/leads";
 import { cn } from "@/lib/utils";
 
@@ -33,6 +35,8 @@ export function ContactForm({ showIntro = true }: { showIntro?: boolean }) {
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<Status>("idle");
   const [serverError, setServerError] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
+  const captchaRef = useRef<RecaptchaHandle>(null);
 
   function set<K extends keyof Lead>(key: K, value: string) {
     setValues((v) => ({ ...v, [key]: value }));
@@ -48,10 +52,15 @@ export function ContactForm({ showIntro = true }: { showIntro?: boolean }) {
       first?.focus();
       return;
     }
+    if (!captchaToken) {
+      setStatus("error");
+      setServerError(CAPTCHA_REQUIRED);
+      return;
+    }
 
     setStatus("submitting");
     setServerError("");
-    const res = await submitLead(values);
+    const res = await submitLead(values, captchaToken);
 
     if (res.ok) {
       setStatus("success");
@@ -59,6 +68,7 @@ export function ContactForm({ showIntro = true }: { showIntro?: boolean }) {
     } else {
       setStatus("error");
       setServerError(res.error);
+      captchaRef.current?.reset();
     }
   }
 
@@ -256,6 +266,8 @@ export function ContactForm({ showIntro = true }: { showIntro?: boolean }) {
                     className={cn(fieldBase, ring("message"), "resize-y")}
                   />
                 </Field>
+
+                <RecaptchaField ref={captchaRef} onChange={setCaptchaToken} />
 
                 {status === "error" && (
                   <p

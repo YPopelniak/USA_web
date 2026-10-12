@@ -11,7 +11,7 @@ export type Lead = {
 export type SubmitResult = { ok: true } | { ok: false; error: string };
 
 /** Contact / service-request form. Delivered by Formspree. */
-export async function submitLead(lead: Lead): Promise<SubmitResult> {
+export async function submitLead(lead: Lead, captchaToken: string): Promise<SubmitResult> {
   return sendToFormspree(
     {
       form: "Service request",
@@ -22,5 +22,6 @@ export async function submitLead(lead: Lead): Promise<SubmitResult> {
       message: lead.message,
     },
     `Service request — ${lead.service || "general"} — ${lead.name}`,
+    captchaToken,
   );
 }

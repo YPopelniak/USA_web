@@ -10,6 +10,7 @@
  */
 
 import { trackLead } from "@/lib/analytics";
+import { CAPTCHA_REQUIRED } from "@/lib/recaptcha";
 
 const ENDPOINT =
   (import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined)?.trim() ||
@@ -23,7 +24,12 @@ const GENERIC =
 export async function sendToFormspree(
   payload: Record<string, unknown>,
   subject: string,
+  captchaToken: string,
 ): Promise<SendResult> {
+  if (!captchaToken.trim()) {
+    return { ok: false, error: CAPTCHA_REQUIRED };
+  }
+
   if (typeof navigator !== "undefined" && navigator.onLine === false) {
     return { ok: false, error: "You appear to be offline. Check your connection and try again." };
   }
@@ -37,7 +43,11 @@ export async function sendToFormspree(
     const res = await fetch(ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ ...payload, _subject: subject }),
+      body: JSON.stringify({
+        ...payload,
+        _subject: subject,
+        "g-recaptcha-response": captchaToken,
+      }),
       signal: controller.signal,
     });
 

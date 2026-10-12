@@ -1,4 +1,4 @@
-import { useState, type FormEvent, type ReactNode } from "react";
+import { useRef, useState, type FormEvent, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import {
   AlertCircle,
@@ -24,7 +24,9 @@ import { CallButton } from "@/components/CallButton";
 import { Eyebrow } from "@/components/Eyebrow";
 import { Faq } from "@/sections/Faq";
 import { FormConsent } from "@/components/FormConsent";
+import { RecaptchaField, type RecaptchaHandle } from "@/components/RecaptchaField";
 import { sendToFormspree } from "@/lib/forms";
+import { CAPTCHA_REQUIRED } from "@/lib/recaptcha";
 import { useSeo } from "@/lib/seo";
 import { breadcrumbSchema, ovenStoveRepairServiceSchema } from "@/lib/schema";
 
@@ -818,6 +820,8 @@ function RepairRequestForm() {
   const [values, setValues] = useState(emptyRequest);
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [error, setError] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
+  const captchaRef = useRef<RecaptchaHandle>(null);
 
   const set = (field: keyof RequestValues, value: string) =>
     setValues((current) => ({ ...current, [field]: value }));
@@ -835,6 +839,10 @@ function RepairRequestForm() {
       !values.preferred.trim()
     ) {
       setError("Please complete each required field and provide a valid phone number.");
+      return;
+    }
+    if (!captchaToken) {
+      setError(CAPTCHA_REQUIRED);
       return;
     }
 
@@ -855,6 +863,7 @@ function RepairRequestForm() {
         preferredAppointment: values.preferred,
       },
       `Oven repair request — ${values.brand} — ${values.name}`,
+      captchaToken,
     );
 
     if (result.ok) {
@@ -863,6 +872,7 @@ function RepairRequestForm() {
     } else {
       setStatus("error");
       setError(result.error);
+      captchaRef.current?.reset();
     }
   }
 
@@ -993,6 +1003,9 @@ function RepairRequestForm() {
             required
           />
         </FormField>
+      </div>
+      <div className="mt-5">
+        <RecaptchaField ref={captchaRef} onChange={setCaptchaToken} />
       </div>
       {error && (
         <p role="alert" className="mt-4 flex items-start gap-2 bg-red-50 p-3 text-[13px] text-red-700">
