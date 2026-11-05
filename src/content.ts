@@ -18,10 +18,13 @@ export const company = {
   phoneE164: "+12243601633",
   email: "info@usaappliancehvac.com",
   emailHref: "mailto:info@usaappliancehvac.com",
-  addressShort: "Chicago, IL",
-  /** Service-area business: no storefront address published. */
-  address: "Chicago and surrounding areas",
-  mapHref: "https://www.google.com/maps/search/?api=1&query=Chicago+IL",
+  addressShort: "Rolling Meadows, IL",
+  /** Office address. Technicians travel to the customer. */
+  address: "1600 Golf Rd, Suite 1200, Rolling Meadows, IL 60008",
+  addressLine1: "1600 Golf Rd, Suite 1200",
+  addressLine2: "Rolling Meadows, IL 60008",
+  mapHref:
+    "https://www.google.com/maps/search/?api=1&query=1600+Golf+Rd+Suite+1200+Rolling+Meadows+IL+60008",
   // TODO(real-data): confirm published hours and emergency availability
   hours: "Mon – Sat, 8:00 AM – 6:00 PM",
   serviceArea: "Chicago and surrounding areas",
@@ -1899,15 +1902,15 @@ export function getLocationPage(slug: string) {
  * Structured facts for schema.org. Kept separate from marketing copy so the
  * machine-readable version and the human-readable version cannot drift.
  *
- * This is modelled as a service-area business: no storefront address is
- * published, which is the correct representation for a mobile service company.
+ * The office address is published; the service area is listed separately
+ * in areaServed because technicians travel to the customer.
  */
 export const businessFacts = {
   legalName: "USA Appliance & HVAC",
-  streetAddress: "", // TODO(real-data): only publish if there is a real office
-  addressLocality: "Chicago",
+  streetAddress: "1600 Golf Rd, Suite 1200",
+  addressLocality: "Rolling Meadows",
   addressRegion: "IL",
-  postalCode: "",
+  postalCode: "60008",
   addressCountry: "US",
   priceRange: "$$",
   currenciesAccepted: "USD",

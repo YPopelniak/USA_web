@@ -125,7 +125,11 @@ export function Footer() {
                       className="mt-0.5 size-4 shrink-0 text-brand-500"
                       aria-hidden="true"
                     />
-                    {company.address}
+                    <span>
+                      {company.addressLine1}
+                      <br />
+                      {company.addressLine2}
+                    </span>
                   </a>
                 </li>
               </ul>

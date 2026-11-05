@@ -9,6 +9,7 @@ import { useSeo } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/schema";
 import { serviceGroups, site } from "@/content";
 import { getServicePage, servicePagePath } from "@/service-pages";
+import chicagoSkyline from "@/assets/photos/why-us-chicago.webp";
 import NotFound from "./NotFound";
 
 export default function ServiceDetail() {
@@ -56,6 +57,9 @@ export default function ServiceDetail() {
           { label: group.navLabel, to: `/${group.slug}` },
           { label: page.title },
         ]}
+        backgroundImage={chicagoSkyline}
+        backgroundAlt=""
+        softScrim
       >
         <div className="flex flex-wrap gap-3" data-cta-location="service">
           <BookButton label="Book Service" topic={page.title} />

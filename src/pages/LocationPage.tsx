@@ -85,6 +85,7 @@ export default function LocationPage() {
         ]}
         backgroundImage={chicagoSkyline}
         backgroundAlt=""
+        softScrim
       >
         <div className="grid w-full grid-cols-2 gap-2 sm:flex sm:w-auto sm:flex-wrap sm:gap-3">
           <BookButton

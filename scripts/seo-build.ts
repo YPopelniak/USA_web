@@ -92,7 +92,7 @@ const routes: Route[] = [
     changefreq: "yearly",
     schema: [localBusinessSchema(), breadcrumbSchema([{ name: "About", path: "/about" }]), faqSchema()],
     summary: [
-      `${company.name} is a licensed and insured repair crew based at ${businessFacts.streetAddress}, ${businessFacts.addressLocality}, ${businessFacts.addressRegion}.`,
+      `${company.name} is a licensed and insured repair crew based at ${businessFacts.streetAddress}, ${businessFacts.addressLocality}, ${businessFacts.addressRegion} ${businessFacts.postalCode}.`,
       whyUs.points.map((p) => `${p.title}: ${p.body}`).join(" "),
       `Service area: ${serviceAreaTowns.join(", ")}.`,
     ],
@@ -316,7 +316,7 @@ const routes: Route[] = [
     schema: [localBusinessSchema(), breadcrumbSchema([{ name: "Contact", path: "/contact" }])],
     summary: [
       `Call ${company.phone} or email ${company.email}.`,
-      `${company.hours}. Service area: ${company.address}.`,
+      `${company.hours}. Office: ${company.address}. Service area: ${company.serviceArea}.`,
     ],
   },
   {

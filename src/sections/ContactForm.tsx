@@ -137,10 +137,15 @@ export function ContactForm({ showIntro = true }: { showIntro?: boolean }) {
                 </span>
                 <span>
                   <span className="block text-[13px] font-semibold uppercase tracking-[0.1em] text-ink-muted">
-                    Area
+                    Address
                   </span>
                   <span className="block text-[17px] font-semibold transition-colors group-hover:text-brand-600">
-                    {company.address}
+                    {company.addressLine1}
+                    <br />
+                    {company.addressLine2}
+                  </span>
+                  <span className="mt-1 block text-[14px] text-ink-muted">
+                    Serving {company.serviceArea}
                   </span>
                 </span>
               </a>

@@ -12,7 +12,7 @@ export function PageHero({
   children,
   backgroundImage,
   backgroundAlt = "",
-  imagePosition = "center 58%",
+  imagePosition = "center bottom",
   softScrim = false,
 }: {
   kicker: string;
