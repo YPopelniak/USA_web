@@ -119,19 +119,20 @@ export const servicePages: ServicePageCopy[] = [
     groupSlug: "hvac-services",
     slug: "heating-furnace-repair",
     title: "Heating and furnace repair in Chicago",
-    seoTitle: "Furnace Repair in Chicago | USA Appliance & HVAC",
+    seoTitle: "Furnace Not Turning On? Furnace Repair in Chicago | USA HVAC",
     description:
-      "No heat, ignition faults, blower problems, and safety checks on residential furnaces. Chicago and surrounding suburbs.",
+      "Furnace not turning on, no heat, ignition faults, or blower problems? Residential furnace repair and safety checks in Chicago and surrounding suburbs.",
     eyebrow: "HVAC services",
     paragraphs: [
       "A furnace that will not light, that lights and shuts off, or that runs with weak airflow needs the fault identified before parts are replaced. Igniters, flame sensors, limits, blowers, and controls fail in ways that look similar from the hallway.",
+      "Furnace not turning on at all? Check that the thermostat is set to Heat and above room temperature, the furnace switch and breaker are on, and the filter is not clogged. If it still will not start, the cause is often an igniter, a flame sensor, a pressure switch, a blocked condensate drain, or a control board, and that needs a technician to test.",
       "We also service heat pumps that are the home’s heat source. A repair quote names the failed part.",
     ],
     includes: [
+      "Furnace not turning on or not responding to the thermostat",
       "No heat and intermittent heat",
       "Ignition and flame-sensing faults",
       "Blower and airflow problems",
-      "Thermostat calls that do not start the furnace",
     ],
     note: "If you smell gas, leave the area and contact 911 or your gas utility. Do not try to light the furnace, and do not use a gas oven to heat the house.",
   },

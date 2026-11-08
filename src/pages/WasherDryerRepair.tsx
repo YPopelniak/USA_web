@@ -45,7 +45,7 @@ const washerSymptoms = [
     Icon: Waves,
   },
   {
-    title: "Washer will not spin",
+    title: "Washer won't spin",
     body: "A lid lock, belt, motor, bearing or unbalanced load can stop the spin. We check those before replacing parts.",
     Icon: RotateCcw,
   },
@@ -313,8 +313,8 @@ const laundryFaqs = [
     a: "A washer not draining can involve a pump, clogged drain path, hose, filter or control. Testing is needed before a part is replaced.",
   },
   {
-    q: "Why is my washer not spinning?",
-    a: "A washer not spinning may be a lock, belt, motor, bearing or unbalanced-load condition. We identify the actual fault on site.",
+    q: "Why won't my washer spin?",
+    a: "First, redistribute the load, since one heavy item can stop the spin. Check that the lid or door closes firmly and that the washer is not left full of water. If it still won't spin, the cause is usually a lid lock, drain pump, belt, motor coupling, bearing or control, and we identify the actual fault on site.",
   },
   {
     q: "Is it safe to use a leaking washing machine?",
@@ -370,7 +370,7 @@ export default function WasherDryerRepair() {
   useSeo({
     title: "Washer & Dryer Repair Chicago | USA Appliance & HVAC",
     description:
-      "Same-day washer and dryer repair in Chicago and surrounding suburbs. We fix draining, spinning, leaking and heating problems. Call (224) 360-1633.",
+      "Same-day washer and dryer repair in Chicago and suburbs. Washer won't spin or drain, leaks, or dryer not heating? Call (224) 360-1633.",
     ogTitle: "Washer & Dryer Repair in Chicago and Surrounding Suburbs",
     ogDescription:
       "Washer not draining or dryer not heating? Schedule professional laundry-appliance repair with USA Appliance & HVAC.",

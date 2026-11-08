@@ -143,7 +143,7 @@ const routes: Route[] = [
     path: "/appliance-repair/washer-dryer-repair",
     title: "Washer & Dryer Repair Chicago | USA Appliance & HVAC",
     description:
-      "Same-day washer and dryer repair in Chicago and surrounding suburbs. We fix draining, spinning, leaking and heating problems. Call (224) 360-1633.",
+      "Same-day washer and dryer repair in Chicago and suburbs. Washer won't spin or drain, leaks, or dryer not heating? Call (224) 360-1633.",
     ogTitle: "Washer & Dryer Repair in Chicago and Surrounding Suburbs",
     ogDescription:
       "Washer not draining or dryer not heating? Schedule professional laundry-appliance repair with USA Appliance & HVAC.",
@@ -267,7 +267,7 @@ const routes: Route[] = [
     changefreq: "monthly",
     schema: [breadcrumbSchema([{ name: "Blog", path: "/blog" }])],
     summary: [
-      "Blog posts on industry conferences, heat pumps, newer refrigerants, repair decisions, and appliance error codes.",
+      "Blog posts on local AC repair, furnace tune-up and maintenance costs, industry conferences, heat pumps, newer refrigerants, repair decisions, and appliance error codes.",
       ...blogPosts.map((post) => `${post.title}: ${post.excerpt}`),
     ],
   },

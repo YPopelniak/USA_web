@@ -18,7 +18,7 @@ export default function BlogIndex() {
       <PageHero
         kicker="Blog"
         title="Notes on the equipment, before you book"
-        body="Short notes on upcoming Chicago conferences, newer heating and cooling equipment, repair-or-replace decisions, and what an error code does and does not tell you."
+        body="Local repair guides, what maintenance and repairs really cost, newer heating and cooling equipment, repair-or-replace decisions, and what an error code does and does not tell you."
         crumbs={[{ label: "Blog" }]}
       />
 
