@@ -1,17 +1,15 @@
 import { sendToFormspree } from "./forms";
 
 export type CallbackRequest = {
-  firstName: string;
-  lastName: string;
+  name: string;
   phone: string;
   email: string;
-  street: string;
-  unit: string;
-  city: string;
-  state: string;
-  zip: string;
-  country: string;
+  address: string;
   topic: string;
+  /** Human-readable day, e.g. "Monday, Nov 16". */
+  date: string;
+  /** Arrival window, e.g. "8:00 AM - 10:00 AM". */
+  window: string;
 };
 
 export type CallbackResult =
@@ -23,30 +21,19 @@ export async function requestCallback(
   req: CallbackRequest,
   captchaToken: string,
 ): Promise<CallbackResult> {
-  const name = `${req.firstName} ${req.lastName}`.trim();
-  const address = [req.street, req.unit, `${req.city}, ${req.state} ${req.zip}`, req.country]
-    .filter(Boolean)
-    .join(", ");
-
   const res = await sendToFormspree(
     {
       form: "Booking request",
-      name,
-      first_name: req.firstName,
-      last_name: req.lastName,
+      name: req.name,
       email: req.email,
       phone: req.phone,
-      street: req.street,
-      unit: req.unit || "(none)",
-      city: req.city,
-      state: req.state,
-      zip: req.zip,
-      country: req.country,
-      address,
+      address: req.address,
       service: req.topic,
       topic: req.topic,
+      preferred_date: req.date,
+      preferred_window: req.window,
     },
-    `BOOKING — ${name} — ${req.topic} — ${req.city}`,
+    `BOOKING — ${req.name} — ${req.topic} — ${req.date}, ${req.window}`,
     captchaToken,
   );
 

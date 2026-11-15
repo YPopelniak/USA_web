@@ -16,6 +16,7 @@ import { FormConsent } from "./FormConsent";
 import { RecaptchaField, type RecaptchaHandle } from "./RecaptchaField";
 import { CAPTCHA_REQUIRED } from "@/lib/recaptcha";
 import { requestCallback, type CallbackRequest } from "@/lib/callback";
+import { TimeSlotPicker, formatDayLabel, isSlotAvailable } from "./TimeSlotPicker";
 import { cn } from "@/lib/utils";
 
 type Ctx = { open: (topic?: string) => void; close: () => void; isOpen: boolean };
@@ -30,34 +31,24 @@ export function useCallbackModal() {
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-const US_STATES = ["IL", "WI", "IN", "KY", "IA", "TN", "NY", "TX", "CA", "WA", "MI", "MN", "CO", "FL", "GA"];
-
 type BookingFields = {
-  firstName: string;
-  lastName: string;
+  name: string;
   phone: string;
   email: string;
   service: string;
-  street: string;
-  unit: string;
-  city: string;
-  zip: string;
-  country: string;
-  state: string;
+  address: string;
+  date: string;
+  window: string;
 };
 
 const emptyFields: BookingFields = {
-  firstName: "",
-  lastName: "",
+  name: "",
   phone: "",
   email: "",
   service: "",
-  street: "",
-  unit: "",
-  city: "",
-  zip: "",
-  country: "United States",
-  state: "",
+  address: "",
+  date: "",
+  window: "",
 };
 
 /** Page buttons pass a topic that is close to, but not always identical to, a service title. */
@@ -80,17 +71,13 @@ function serviceFromTopic(topic: string): string {
 }
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-const ZIP_PATTERN = /^\d{5}(-\d{4})?$/;
 
 type FieldErrors = Partial<Record<keyof BookingFields, string>>;
 
 function validateField(key: keyof BookingFields, v: BookingFields): string | undefined {
   switch (key) {
-    case "firstName":
-      if (!v.firstName.trim()) return "First name is required";
-      return undefined;
-    case "lastName":
-      if (!v.lastName.trim()) return "Last name is required";
+    case "name":
+      if (!v.name.trim()) return "Name is required";
       return undefined;
     case "phone": {
       const digits = v.phone.replace(/\D/g, "");
@@ -106,26 +93,14 @@ function validateField(key: keyof BookingFields, v: BookingFields): string | und
     case "service":
       if (!v.service) return "Service is required";
       return undefined;
-    case "street":
-      if (!v.street.trim()) return "Street address is required";
-      if (v.street.trim().length < 5) return "Enter the full street address";
+    case "address":
+      if (!v.address.trim()) return "Service address is required";
+      if (v.address.trim().length < 8 || !/\d/.test(v.address))
+        return "Enter the street, city and zip code";
       return undefined;
-    case "unit":
-      return undefined;
-    case "city":
-      if (!v.city.trim()) return "City is required";
-      if (!/^[A-Za-z][A-Za-z .'-]{1,39}$/.test(v.city.trim())) return "Use letters for the city";
-      return undefined;
-    case "zip":
-      if (!v.zip.trim()) return "Zip code is required";
-      if (v.country === "United States" && !ZIP_PATTERN.test(v.zip.trim()))
-        return "Enter a 5-digit zip code";
-      return undefined;
-    case "country":
-      if (!v.country) return "Country is required";
-      return undefined;
-    case "state":
-      if (!v.state) return "State is required";
+    case "window":
+      if (!v.date || !v.window) return "Choose a day and an arrival window";
+      if (!isSlotAvailable(v.date, v.window)) return "That window has passed. Choose another one";
       return undefined;
     default:
       return undefined;
@@ -176,6 +151,7 @@ function CallbackModal({
   const [status, setStatus] = useState<Status>("idle");
   const [serverError, setServerError] = useState("");
   const [captchaToken, setCaptchaToken] = useState("");
+  const [booked, setBooked] = useState("");
   const captchaRef = useRef<RecaptchaHandle>(null);
 
   useEffect(() => {
@@ -232,22 +208,19 @@ function CallbackModal({
 
     setStatus("submitting");
     const payload: CallbackRequest = {
-      firstName: fields.firstName.trim(),
-      lastName: fields.lastName.trim(),
+      name: fields.name.trim(),
       phone: fields.phone.trim(),
       email: fields.email.trim(),
-      street: fields.street.trim(),
-      unit: fields.unit.trim(),
-      city: fields.city.trim(),
-      state: fields.state,
-      zip: fields.zip.trim(),
-      country: fields.country,
+      address: fields.address.trim(),
       topic: fields.service,
+      date: formatDayLabel(fields.date),
+      window: fields.window,
     };
     const res = await requestCallback(payload, captchaToken);
 
     if (res.ok) {
       setStatus("success");
+      setBooked(`${payload.date}, ${payload.window}`);
       setFields(emptyFields);
     } else {
       setServerError(res.error);
@@ -307,8 +280,13 @@ function CallbackModal({
                   <p className="mx-auto mt-4 max-w-[22rem] text-[17px] leading-[1.5] text-[#525866]">
                     Thanks — we've received your service request.
                   </p>
+                  {booked && (
+                    <p className="mx-auto mt-3 max-w-[22rem] text-[17px] font-semibold leading-[1.5] text-ink">
+                      {booked}
+                    </p>
+                  )}
                   <p className="mx-auto mt-3 max-w-[22rem] text-[17px] leading-[1.5] text-[#525866]">
-                    We'll contact you shortly to confirm availability and schedule your visit.
+                    We'll contact you shortly to confirm this arrival window.
                   </p>
                   <p className="mt-6 text-[17px] leading-[1.5] text-[#525866]">Urgent service?</p>
                   <a
@@ -337,26 +315,18 @@ function CallbackModal({
                 </h2>
 
                 <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  <TextField
-                    id="book-first"
-                    label="First name"
-                    required
-                    autoComplete="given-name"
-                    value={fields.firstName}
-                    error={errors.firstName}
-                    onChange={(value) => set("firstName", value)}
-                    onBlur={() => blur("firstName")}
-                  />
-                  <TextField
-                    id="book-last"
-                    label="Last name"
-                    required
-                    autoComplete="family-name"
-                    value={fields.lastName}
-                    error={errors.lastName}
-                    onChange={(value) => set("lastName", value)}
-                    onBlur={() => blur("lastName")}
-                  />
+                  <div className="sm:col-span-2">
+                    <TextField
+                      id="book-name"
+                      label="Name"
+                      required
+                      autoComplete="name"
+                      value={fields.name}
+                      error={errors.name}
+                      onChange={(value) => set("name", value)}
+                      onBlur={() => blur("name")}
+                    />
+                  </div>
                   <TextField
                     id="book-phone"
                     label="Phone number"
@@ -401,79 +371,38 @@ function CallbackModal({
                     </SelectField>
                   </div>
 
-                  <p className="pt-3 text-[15px] leading-snug text-ink sm:col-span-2">
-                    Please add the address where you want the service to take place.
-                  </p>
+                  <div className="sm:col-span-2">
+                    <TextField
+                      id="book-address"
+                      label="Service address (street, unit, city, zip)"
+                      required
+                      autoComplete="street-address"
+                      value={fields.address}
+                      error={errors.address}
+                      onChange={(value) => set("address", value)}
+                      onBlur={() => blur("address")}
+                    />
+                  </div>
 
-                  <TextField
-                    id="book-street"
-                    label="Street address"
-                    required
-                    autoComplete="address-line1"
-                    value={fields.street}
-                    error={errors.street}
-                    onChange={(value) => set("street", value)}
-                    onBlur={() => blur("street")}
-                  />
-                  <TextField
-                    id="book-unit"
-                    label="Unit / apartment / suite"
-                    autoComplete="address-line2"
-                    value={fields.unit}
-                    error={errors.unit}
-                    onChange={(value) => set("unit", value)}
-                  />
-                  <TextField
-                    id="book-city"
-                    label="City"
-                    required
-                    autoComplete="address-level2"
-                    value={fields.city}
-                    error={errors.city}
-                    onChange={(value) => set("city", value)}
-                    onBlur={() => blur("city")}
-                  />
-                  <TextField
-                    id="book-zip"
-                    label="Zip code"
-                    required
-                    autoComplete="postal-code"
-                    inputMode="numeric"
-                    value={fields.zip}
-                    error={errors.zip}
-                    onChange={(value) => set("zip", value)}
-                    onBlur={() => blur("zip")}
-                  />
-                  <SelectField
-                    id="book-country"
-                    label="Country"
-                    required
-                    autoComplete="country-name"
-                    value={fields.country}
-                    error={errors.country}
-                    onChange={(value) => set("country", value)}
-                  >
-                    <option value="United States">United States</option>
-                  </SelectField>
-                  <SelectField
-                    id="book-state"
-                    label="State"
-                    required
-                    autoComplete="address-level1"
-                    value={fields.state}
-                    error={errors.state}
-                    onChange={(value) => set("state", value)}
-                    onBlur={() => blur("state")}
-                  >
-                    <option value="" disabled>
-                      {" "}
-                    </option>
-                    {US_STATES.map((code) => (
-                      <option key={code} value={code}>
-                        {code}
-                      </option>
-                    ))}
-                  </SelectField>
+                  <div className="pt-3 sm:col-span-2">
+                    <p className="mb-3 text-[15px] font-semibold text-ink">
+                      Choose an arrival window *
+                    </p>
+                    <TimeSlotPicker
+                      date={fields.date}
+                      window={fields.window}
+                      error={errors.window}
+                      onChange={(date, window) => {
+                        set("date", date);
+                        set("window", window);
+                      }}
+                    />
+                    {errors.window && (
+                      <p id="book-slot-error" className="mt-1.5 px-1 text-[13px] text-[#e2186f]">
+                        {errors.window}
+                      </p>
+                    )}
+                  </div>
                 </div>
 
                 <div className="mt-5">
