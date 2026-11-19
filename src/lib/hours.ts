@@ -17,7 +17,7 @@ export type OpenState = {
   open: boolean;
   /** Short label for the badge, e.g. "Open now" or "Closed". */
   label: string;
-  /** Supporting line, e.g. "Until 6:00 PM" or "Opens Mon at 8:00 AM". */
+  /** Supporting line, e.g. "Until 6:00 PM" or "Opens Mon at 7:00 AM". */
   detail: string;
 };
 

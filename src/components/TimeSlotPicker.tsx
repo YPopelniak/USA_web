@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 const TZ = "America/Chicago";
 
-/** Two-hour arrival windows inside business hours (Mon–Sat, 8:00 AM – 6:00 PM). */
+/** Two-hour arrival windows, Mon–Sat. Office hours start at 7:00 AM; the first arrival window is 8:00 AM. */
 const WINDOWS = [
   { start: 8, end: 10 },
   { start: 10, end: 12 },

@@ -26,7 +26,7 @@ export const company = {
   mapHref:
     "https://www.google.com/maps/search/?api=1&query=1600+Golf+Rd+Suite+1200+Rolling+Meadows+IL+60008",
   // TODO(real-data): confirm published hours and emergency availability
-  hours: "Mon – Sat, 8:00 AM – 6:00 PM",
+  hours: "Mon – Sat, 7:00 AM – 6:00 PM",
   serviceArea: "Chicago and surrounding areas",
   socials: [
     { label: "Instagram", href: "https://www.instagram.com/usaappliancehvac", icon: "instagram" },
@@ -964,7 +964,7 @@ function visitSection(town: string): LocationPageCopy["visit"] {
     steps: [
       {
         title: "Book and arrival window",
-        body: `Book online or call ${company.phone}. We give an arrival window, not a vague half day. Same-day visits are usually available when you call early and a slot is still open. Hours stay Monday through Saturday, 8:00 AM to 6:00 PM. We do not offer night or Sunday coverage.`,
+        body: `Book online or call ${company.phone}. We give an arrival window, not a vague half day. Same-day visits are usually available when you call early and a slot is still open. Hours stay Monday through Saturday, 7:00 AM to 6:00 PM. We do not offer night or Sunday coverage.`,
       },
       {
         title: "Diagnosis",
@@ -1062,7 +1062,7 @@ export const locationPages: LocationPageCopy[] = [
     h1: "Appliance and HVAC Repair in Arlington Heights, IL",
     opening: [
       `USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Arlington Heights, including ZIP codes 60004 and 60005.`,
-      `Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls downtown near the Metra station and north of Palatine Road.`,
+      `Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls downtown near the Metra station and north of Palatine Road.`,
       `Call ${company.phone} or book online.`,
     ],
     appliance: {
@@ -1088,7 +1088,7 @@ export const locationPages: LocationPageCopy[] = [
       steps: [
         {
           title: "Book and arrival window",
-          body: `Book online or call ${company.phone}. We give an arrival window, not a vague half day. Same-day visits are usually available when you call early and a slot is still open. Hours stay Monday through Saturday, 8:00 AM to 6:00 PM. We do not offer night or Sunday coverage.`,
+          body: `Book online or call ${company.phone}. We give an arrival window, not a vague half day. Same-day visits are usually available when you call early and a slot is still open. Hours stay Monday through Saturday, 7:00 AM to 6:00 PM. We do not offer night or Sunday coverage.`,
         },
         {
           title: "Diagnosis",
@@ -1165,7 +1165,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Mount Prospect, IL. Diagnosis first, then a written price. Calls near Village Green and Metra. Book online.",
     opening: [
       `USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Mount Prospect, including ZIP code 60056.`,
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls around the Village Green downtown and the Metra station.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls around the Village Green downtown and the Metra station.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1193,7 +1193,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Palatine, IL. Diagnosis first, then a written price. Downtown near the Metra station. Book online.",
     opening: [
       `USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Palatine, including ZIP codes 60067 and 60074.`,
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls downtown near the Metra station on Wood Street and around Town Square.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls downtown near the Metra station on Wood Street and around Town Square.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1221,7 +1221,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Schaumburg, IL. Diagnosis first, then a written price. Woodfield, Town Square, and Metra. Book online.",
     opening: [
       `USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Schaumburg, including ZIP codes 60173, 60193, and 60194.`,
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls near Woodfield Mall, Town Square, and the Metra station on Springinsguth Road.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls near Woodfield Mall, Town Square, and the Metra station on Springinsguth Road.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1249,7 +1249,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Rolling Meadows, IL. Diagnosis first, then a written price. Ranch and split-level homes. Book online.",
     opening: [
       `USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Rolling Meadows, including ZIP code 60008.`,
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls along Kirchoff Road and in the ranch neighborhoods between Arlington Heights and Schaumburg.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls along Kirchoff Road and in the ranch neighborhoods between Arlington Heights and Schaumburg.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1277,7 +1277,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Hoffman Estates, IL. Diagnosis first, then a written price. Prairie Stone and Golf Road. Book online.",
     opening: [
       `USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Hoffman Estates, including ZIP codes 60169 and 60192.`,
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls south of I-90 near Prairie Stone and the NOW Arena, and on the older streets south of Golf Road.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls south of I-90 near Prairie Stone and the NOW Arena, and on the older streets south of Golf Road.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1305,7 +1305,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Elk Grove Village, IL. Diagnosis first, then a written price. Centex homes near Busse Woods. Book online.",
     opening: [
       `USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Elk Grove Village, including ZIP code 60007.`,
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls in the Centex residential streets west of the industrial park and near Busse Woods.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls in the Centex residential streets west of the industrial park and near Busse Woods.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1333,7 +1333,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Buffalo Grove, IL. Diagnosis first, then a written price. Lake Cook Road and Town Center. Book online.",
     opening: [
       `USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Buffalo Grove, including ZIP code 60089.`,
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls along Lake Cook Road, at the Town Center, and in the subdivisions north toward Buffalo Creek.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls along Lake Cook Road, at the Town Center, and in the subdivisions north toward Buffalo Creek.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1361,7 +1361,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Wheeling, IL. Diagnosis first, then a written price. Homes and Milwaukee Avenue kitchens. Book online.",
     opening: [
       `USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Wheeling, including ZIP code 60090.`,
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls on Milwaukee Avenue and in the residential streets west of that corridor.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls on Milwaukee Avenue and in the residential streets west of that corridor.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1389,7 +1389,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair across Chicago. Diagnosis first, then a written price. Homes, condos, and small commercial kitchens. Book online.",
     opening: [
       "USA Appliance & HVAC handles appliance and HVAC calls across Chicago, from the neighborhoods with their own pages to the blocks between them.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. Same-day visits are usually available when you call early and a slot is still open.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. Same-day visits are usually available when you call early and a slot is still open.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1417,7 +1417,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in The Loop. Diagnosis first, then a written price. High-rises, offices, and small kitchens. Book online.",
     opening: [
       "USA Appliance & HVAC handles appliance and HVAC calls in The Loop, including ZIP codes 60601, 60602, 60603, and 60604.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. Loading docks, freight elevators, and front-desk rules slow a visit, so mention building access when you book.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. Loading docks, freight elevators, and front-desk rules slow a visit, so mention building access when you book.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1444,7 +1444,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in River North. Diagnosis first, then a written price. Condos and restaurant kitchens. Book online.",
     opening: [
       "USA Appliance & HVAC handles appliance and HVAC calls in River North, including ZIP code 60654.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls in the residential towers and in the restaurant kitchens along the same streets.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls in the residential towers and in the restaurant kitchens along the same streets.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1471,7 +1471,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in the Gold Coast. Diagnosis first, then a written price. Vintage apartments and high-rises. Book online.",
     opening: [
       "USA Appliance & HVAC handles appliance and HVAC calls in the Gold Coast, including ZIP codes 60610 and 60611.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. Prewar walk-ups and doorman buildings both need the access notes in the booking.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. Prewar walk-ups and doorman buildings both need the access notes in the booking.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1498,7 +1498,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Streeterville. Diagnosis first, then a written price. High-rise kitchens and laundry rooms. Book online.",
     opening: [
       "USA Appliance & HVAC handles appliance and HVAC calls in Streeterville, including ZIP code 60611.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. Tell us the loading dock and certificate requirements when you book a tower.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. Tell us the loading dock and certificate requirements when you book a tower.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1525,7 +1525,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in the West Loop. Diagnosis first, then a written price. Lofts, condos, and restaurant lines. Book online.",
     opening: [
       "USA Appliance & HVAC handles appliance and HVAC calls in the West Loop, including ZIP codes 60607 and 60661.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls in converted lofts and in the kitchens along Randolph and Fulton.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls in converted lofts and in the kitchens along Randolph and Fulton.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1552,7 +1552,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Lincoln Park. Diagnosis first, then a written price. Greystones, walk-ups, and condos. Book online.",
     opening: [
       "USA Appliance & HVAC handles appliance and HVAC calls in Lincoln Park, including ZIP code 60614.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls in greystones, courtyard walk-ups, and the newer condos toward the park.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls in greystones, courtyard walk-ups, and the newer condos toward the park.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1579,7 +1579,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Lakeview. Diagnosis first, then a written price. Walk-ups, two-flats, and condos. Book online.",
     opening: [
       "USA Appliance & HVAC handles appliance and HVAC calls in Lakeview, including ZIP codes 60613 and 60657.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls from the courtyards west of Broadway through the blocks toward the lake.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls from the courtyards west of Broadway through the blocks toward the lake.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1606,7 +1606,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Wicker Park. Diagnosis first, then a written price. Two-flats, condos, and storefronts. Book online.",
     opening: [
       "USA Appliance & HVAC handles appliance and HVAC calls in Wicker Park, including ZIP code 60622.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls in two-flats, condo conversions, and the small commercial kitchens on the retail streets.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls in two-flats, condo conversions, and the small commercial kitchens on the retail streets.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1633,7 +1633,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Logan Square. Diagnosis first, then a written price. Two-flats, greystones, and condos. Book online.",
     opening: [
       "USA Appliance & HVAC handles appliance and HVAC calls in Logan Square, including ZIP code 60647.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls in two-flats and greystones around the boulevard and in newer condos toward the square.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls in two-flats and greystones around the boulevard and in newer condos toward the square.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1659,7 +1659,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Evanston, IL. Diagnosis first, then a written price. Houses, apartments, and small kitchens. Book online.",
     opening: [
       "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Evanston, including ZIP codes 60201 and 60202.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls downtown near the Metra and Davis stops and in the residential streets north and south of there.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls downtown near the Metra and Davis stops and in the residential streets north and south of there.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1685,7 +1685,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Skokie, IL. Diagnosis first, then a written price. Ranches, split-levels, and condos. Book online.",
     opening: [
       "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Skokie, including ZIP codes 60076 and 60077.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls in the ranch neighborhoods and in condos near the village center.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls in the ranch neighborhoods and in condos near the village center.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1711,7 +1711,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Niles, IL. Diagnosis first, then a written price. Ranches, townhomes, and small businesses. Book online.",
     opening: [
       "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Niles, including ZIP code 60714.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls in the residential streets and at the small commercial kitchens along the main roads.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls in the residential streets and at the small commercial kitchens along the main roads.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1737,7 +1737,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Park Ridge, IL. Diagnosis first, then a written price. Brick houses and downtown condos. Book online.",
     opening: [
       "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Park Ridge, including ZIP code 60068.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls in the brick neighborhoods and near the Uptown Metra station.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls in the brick neighborhoods and near the Uptown Metra station.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1763,7 +1763,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Des Plaines, IL. Diagnosis first, then a written price. Houses near downtown and the river. Book online.",
     opening: [
       "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Des Plaines, including ZIP codes 60016 and 60018.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls downtown near the Metra station and in the neighborhoods along River Road and Golf Road.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls downtown near the Metra station and in the neighborhoods along River Road and Golf Road.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1789,7 +1789,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Franklin Park, IL. Diagnosis first, then a written price. Houses and industrial-park kitchens. Book online.",
     opening: [
       "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Franklin Park, including ZIP code 60131.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls in the residential streets and at kitchens in the industrial park.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls in the residential streets and at kitchens in the industrial park.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1815,7 +1815,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Northbrook, IL. Diagnosis first, then a written price. Subdivisions and downtown condos. Book online.",
     opening: [
       "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Northbrook, including ZIP code 60062.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls downtown and in the subdivisions north of Dundee Road.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls downtown and in the subdivisions north of Dundee Road.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1841,7 +1841,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Glenview, IL. Diagnosis first, then a written price. Older homes and newer subdivisions. Book online.",
     opening: [
       "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Glenview, including ZIP codes 60025 and 60026.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls in the older streets near downtown and in the subdivisions toward The Glen.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls in the older streets near downtown and in the subdivisions toward The Glen.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1867,7 +1867,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Morton Grove, IL. Diagnosis first, then a written price. Ranches, split-levels, and condos. Book online.",
     opening: [
       "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Morton Grove, including ZIP code 60053.",
-      "Hours are Monday through Saturday, 8:00 AM to 6:00 PM. We take calls along Dempster Street and in the residential streets north and south of it.",
+      "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls along Dempster Street and in the residential streets north and south of it.",
       `Call ${company.phone} or book online.`,
     ],
     appliance: [
@@ -1919,7 +1919,7 @@ export const businessFacts = {
   openingHours: [
     {
       days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      opens: "08:00",
+      opens: "07:00",
       closes: "18:00",
     },
   ],
