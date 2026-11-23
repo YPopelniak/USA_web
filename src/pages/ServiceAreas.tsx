@@ -5,7 +5,8 @@ import { Segments } from "@/sections/Segments";
 import { Faq } from "@/sections/Faq";
 import { FinalCta } from "@/sections/FinalCta";
 import { Link } from "react-router-dom";
-import { company, locationPagePath, seo, serviceAreaTowns } from "@/content";
+import { company, seo, serviceAreaTowns } from "@/content";
+import { locationPagePath } from "@/location-pages";
 import serviceAreasHero from "@/assets/photos/where-we-work.webp";
 
 export default function ServiceAreas() {

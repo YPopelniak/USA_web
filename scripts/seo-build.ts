@@ -26,13 +26,13 @@ import {
   process as processContent,
   seo,
   serviceAreaTowns,
-  locationPages,
   privacy,
   warranty,
   serviceGroups,
   site,
   whyUs,
 } from "../src/content";
+import { locationPages } from "../src/location-pages";
 import { servicePagePath, servicePages } from "../src/service-pages";
 import { blogPosts } from "../src/blog";
 import {

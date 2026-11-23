@@ -1,4 +1,5 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Suspense } from "react";
+import { useLocation, useRoutes } from "react-router-dom";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -9,28 +10,13 @@ import { CallbackProvider } from "@/components/CallbackModal";
 import { AvailabilityPopup } from "@/components/AvailabilityPopup";
 import { StickyCtas } from "@/components/StickyCtas";
 import { Analytics } from "@/components/Analytics";
+import { routes } from "@/routes";
 
-import Home from "@/pages/Home";
-import AboutPage from "@/pages/AboutPage";
-import ServiceCategory from "@/pages/ServiceCategory";
-import RefrigeratorRepair from "@/pages/RefrigeratorRepair";
-import WasherDryerRepair from "@/pages/WasherDryerRepair";
-import DishwasherRepair from "@/pages/DishwasherRepair";
-import OvenStoveRepair from "@/pages/OvenStoveRepair";
-import ServiceAreas from "@/pages/ServiceAreas";
-import LocationPage from "@/pages/LocationPage";
-import Book from "@/pages/Book";
-import Contact from "@/pages/Contact";
-import Privacy from "@/pages/Privacy";
-import Warranty from "@/pages/Warranty";
-import BlogIndex from "@/pages/BlogIndex";
-import BlogPost from "@/pages/BlogPost";
-import ChicagoBuild from "@/pages/ChicagoBuild";
-import ServiceDetail from "@/pages/ServiceDetail";
-import NotFound from "@/pages/NotFound";
+const routeElements = routes.map(({ path, Page }) => ({ path, element: <Page /> }));
 
 export default function App() {
   const location = useLocation();
+  const page = useRoutes(routeElements);
 
   return (
     <CallbackProvider>
@@ -45,38 +31,7 @@ export default function App() {
       <Navbar />
 
       <main id="main">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/service-areas" element={<ServiceAreas />} />
-          <Route path="/service-areas/:slug" element={<LocationPage />} />
-          <Route path="/book" element={<Book />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/warranty" element={<Warranty />} />
-          <Route path="/blog" element={<BlogIndex />} />
-          <Route path="/blog/appliance-hvac-conferences" element={<ChicagoBuild />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route
-            path="/appliance-repair/refrigerator-repair"
-            element={<RefrigeratorRepair />}
-          />
-          <Route
-            path="/appliance-repair/washer-dryer-repair"
-            element={<WasherDryerRepair />}
-          />
-          <Route
-            path="/appliance-repair/dishwasher-repair"
-            element={<DishwasherRepair />}
-          />
-          <Route
-            path="/appliance-repair/oven-stove-repair"
-            element={<OvenStoveRepair />}
-          />
-          <Route path="/:group/:service" element={<ServiceDetail />} />
-          <Route path="/:group" element={<ServiceCategory />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={<div className="min-h-screen" />}>{page}</Suspense>
       </main>
 
       <Footer />

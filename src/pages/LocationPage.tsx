@@ -8,7 +8,8 @@ import { Faq } from "@/sections/Faq";
 import { FinalCta } from "@/sections/FinalCta";
 import { useSeo } from "@/lib/seo";
 import { breadcrumbSchema, faqSchema, localBusinessSchema } from "@/lib/schema";
-import { getLocationPage, locationPagePath, site } from "@/content";
+import { site } from "@/content";
+import { getLocationPage, locationPagePath } from "@/location-pages";
 import chicagoSkyline from "@/assets/photos/why-us-chicago.webp";
 import NotFound from "./NotFound";
 
