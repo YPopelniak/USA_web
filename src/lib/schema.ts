@@ -42,6 +42,12 @@ export function localBusinessSchema() {
       addressCountry: businessFacts.addressCountry,
       ...(businessFacts.postalCode ? { postalCode: businessFacts.postalCode } : {}),
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: businessFacts.latitude,
+      longitude: businessFacts.longitude,
+    },
+    hasMap: company.googleBusinessUrl,
     areaServed: serviceAreaTowns.map((name) => ({
       "@type": "City",
       name,
@@ -65,7 +71,7 @@ export function localBusinessSchema() {
         },
       })),
     },
-    sameAs: company.socials.map((s) => s.href),
+    sameAs: [company.googleBusinessUrl, ...company.socials.map((s) => s.href)],
     hasCredential: [
       {
         "@type": "EducationalOccupationalCredential",

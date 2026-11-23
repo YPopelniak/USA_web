@@ -3,6 +3,7 @@ import { Logo } from "./Logo";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { company, footer, serviceGroups } from "@/content";
 import { SocialIcon } from "./SocialIcon";
+import { GoogleGlyph } from "./Stars";
 
 /** Same number as the phone line, in wa.me's digits-only format. */
 const whatsappHref =
@@ -130,6 +131,18 @@ export function Footer() {
                       <br />
                       {company.addressLine2}
                     </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={company.googleReviewUrl}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    data-cta-location="footer-review"
+                    className="-mx-2 inline-flex min-h-11 items-center gap-2.5 px-2 font-semibold text-ink transition-colors hover:text-brand-600"
+                  >
+                    <GoogleGlyph className="size-4" />
+                    Review us on Google
                   </a>
                 </li>
               </ul>

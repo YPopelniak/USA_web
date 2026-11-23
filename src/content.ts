@@ -23,8 +23,12 @@ export const company = {
   address: "1600 Golf Rd, Suite 1200, Rolling Meadows, IL 60008",
   addressLine1: "1600 Golf Rd, Suite 1200",
   addressLine2: "Rolling Meadows, IL 60008",
-  mapHref:
-    "https://www.google.com/maps/search/?api=1&query=1600+Golf+Rd+Suite+1200+Rolling+Meadows+IL+60008",
+  /** Google Business Profile, by CID so it survives listing renames. */
+  googleBusinessUrl: "https://maps.google.com/?cid=11924387652885661310",
+  mapHref: "https://maps.google.com/?cid=11924387652885661310",
+  /** Opens the "write a review" dialog on the same listing (Google asks the visitor to sign in). */
+  googleReviewUrl:
+    "https://www.google.com/maps/place//data=!4m3!3m2!1s0x880fb1e60eb41a49:0xa57bef64664dc67e!12e1",
   // TODO(real-data): confirm published hours and emergency availability
   hours: "Mon – Sat, 7:00 AM – 6:00 PM",
   serviceArea: "Chicago and surrounding areas",
@@ -606,7 +610,7 @@ export const googleReviews: {
   kicker: "Customer reviews",
   title: "What Chicago customers say",
   placeId: "", // TODO(real-data): Google Business Profile place_id
-  profileUrl: "https://www.google.com/maps",
+  profileUrl: "https://maps.google.com/?cid=11924387652885661310",
   rating: 0,
   total: 0,
   distribution: [],
@@ -1061,7 +1065,7 @@ export const locationPages: LocationPageCopy[] = [
       "Appliance and HVAC repair in Arlington Heights, IL. Diagnosis first, then a written price. One crew for the kitchen and the furnace. Book online.",
     h1: "Appliance and HVAC Repair in Arlington Heights, IL",
     opening: [
-      `USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Arlington Heights, including ZIP codes 60004 and 60005.`,
+      `USA Appliance & HVAC is based in Rolling Meadows and serves Chicago and the northwest suburbs. We handle appliance and HVAC calls in Arlington Heights, including ZIP codes 60004 and 60005.`,
       `Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls downtown near the Metra station and north of Palatine Road.`,
       `Call ${company.phone} or book online.`,
     ],
@@ -1164,7 +1168,7 @@ export const locationPages: LocationPageCopy[] = [
     description:
       "Appliance and HVAC repair in Mount Prospect, IL. Diagnosis first, then a written price. Calls near Village Green and Metra. Book online.",
     opening: [
-      `USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Mount Prospect, including ZIP code 60056.`,
+      `USA Appliance & HVAC is based in Rolling Meadows and serves Chicago and the northwest suburbs. We handle appliance and HVAC calls in Mount Prospect, including ZIP code 60056.`,
       "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls around the Village Green downtown and the Metra station.",
       `Call ${company.phone} or book online.`,
     ],
@@ -1192,7 +1196,7 @@ export const locationPages: LocationPageCopy[] = [
     description:
       "Appliance and HVAC repair in Palatine, IL. Diagnosis first, then a written price. Downtown near the Metra station. Book online.",
     opening: [
-      `USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Palatine, including ZIP codes 60067 and 60074.`,
+      `USA Appliance & HVAC is based in Rolling Meadows and serves Chicago and the northwest suburbs. We handle appliance and HVAC calls in Palatine, including ZIP codes 60067 and 60074.`,
       "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls downtown near the Metra station on Wood Street and around Town Square.",
       `Call ${company.phone} or book online.`,
     ],
@@ -1220,7 +1224,7 @@ export const locationPages: LocationPageCopy[] = [
     description:
       "Appliance and HVAC repair in Schaumburg, IL. Diagnosis first, then a written price. Woodfield, Town Square, and Metra. Book online.",
     opening: [
-      `USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Schaumburg, including ZIP codes 60173, 60193, and 60194.`,
+      `USA Appliance & HVAC is based in Rolling Meadows and serves Chicago and the northwest suburbs. We handle appliance and HVAC calls in Schaumburg, including ZIP codes 60173, 60193, and 60194.`,
       "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls near Woodfield Mall, Town Square, and the Metra station on Springinsguth Road.",
       `Call ${company.phone} or book online.`,
     ],
@@ -1248,7 +1252,7 @@ export const locationPages: LocationPageCopy[] = [
     description:
       "Appliance and HVAC repair in Rolling Meadows, IL. Diagnosis first, then a written price. Ranch and split-level homes. Book online.",
     opening: [
-      `USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Rolling Meadows, including ZIP code 60008.`,
+      `USA Appliance & HVAC is based in Rolling Meadows and serves Chicago and the northwest suburbs. We handle appliance and HVAC calls in Rolling Meadows, including ZIP code 60008.`,
       "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls along Kirchoff Road and in the ranch neighborhoods between Arlington Heights and Schaumburg.",
       `Call ${company.phone} or book online.`,
     ],
@@ -1276,7 +1280,7 @@ export const locationPages: LocationPageCopy[] = [
     description:
       "Appliance and HVAC repair in Hoffman Estates, IL. Diagnosis first, then a written price. Prairie Stone and Golf Road. Book online.",
     opening: [
-      `USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Hoffman Estates, including ZIP codes 60169 and 60192.`,
+      `USA Appliance & HVAC is based in Rolling Meadows and serves Chicago and the northwest suburbs. We handle appliance and HVAC calls in Hoffman Estates, including ZIP codes 60169 and 60192.`,
       "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls south of I-90 near Prairie Stone and the NOW Arena, and on the older streets south of Golf Road.",
       `Call ${company.phone} or book online.`,
     ],
@@ -1304,7 +1308,7 @@ export const locationPages: LocationPageCopy[] = [
     description:
       "Appliance and HVAC repair in Elk Grove Village, IL. Diagnosis first, then a written price. Centex homes near Busse Woods. Book online.",
     opening: [
-      `USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Elk Grove Village, including ZIP code 60007.`,
+      `USA Appliance & HVAC is based in Rolling Meadows and serves Chicago and the northwest suburbs. We handle appliance and HVAC calls in Elk Grove Village, including ZIP code 60007.`,
       "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls in the Centex residential streets west of the industrial park and near Busse Woods.",
       `Call ${company.phone} or book online.`,
     ],
@@ -1332,7 +1336,7 @@ export const locationPages: LocationPageCopy[] = [
     description:
       "Appliance and HVAC repair in Buffalo Grove, IL. Diagnosis first, then a written price. Lake Cook Road and Town Center. Book online.",
     opening: [
-      `USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Buffalo Grove, including ZIP code 60089.`,
+      `USA Appliance & HVAC is based in Rolling Meadows and serves Chicago and the northwest suburbs. We handle appliance and HVAC calls in Buffalo Grove, including ZIP code 60089.`,
       "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls along Lake Cook Road, at the Town Center, and in the subdivisions north toward Buffalo Creek.",
       `Call ${company.phone} or book online.`,
     ],
@@ -1360,7 +1364,7 @@ export const locationPages: LocationPageCopy[] = [
     description:
       "Appliance and HVAC repair in Wheeling, IL. Diagnosis first, then a written price. Homes and Milwaukee Avenue kitchens. Book online.",
     opening: [
-      `USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Wheeling, including ZIP code 60090.`,
+      `USA Appliance & HVAC is based in Rolling Meadows and serves Chicago and the northwest suburbs. We handle appliance and HVAC calls in Wheeling, including ZIP code 60090.`,
       "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls on Milwaukee Avenue and in the residential streets west of that corridor.",
       `Call ${company.phone} or book online.`,
     ],
@@ -1658,7 +1662,7 @@ export const locationPages: LocationPageCopy[] = [
     description:
       "Appliance and HVAC repair in Evanston, IL. Diagnosis first, then a written price. Houses, apartments, and small kitchens. Book online.",
     opening: [
-      "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Evanston, including ZIP codes 60201 and 60202.",
+      "USA Appliance & HVAC is based in Rolling Meadows and serves Chicago and the northwest suburbs. We handle appliance and HVAC calls in Evanston, including ZIP codes 60201 and 60202.",
       "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls downtown near the Metra and Davis stops and in the residential streets north and south of there.",
       `Call ${company.phone} or book online.`,
     ],
@@ -1684,7 +1688,7 @@ export const locationPages: LocationPageCopy[] = [
     description:
       "Appliance and HVAC repair in Skokie, IL. Diagnosis first, then a written price. Ranches, split-levels, and condos. Book online.",
     opening: [
-      "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Skokie, including ZIP codes 60076 and 60077.",
+      "USA Appliance & HVAC is based in Rolling Meadows and serves Chicago and the northwest suburbs. We handle appliance and HVAC calls in Skokie, including ZIP codes 60076 and 60077.",
       "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls in the ranch neighborhoods and in condos near the village center.",
       `Call ${company.phone} or book online.`,
     ],
@@ -1710,7 +1714,7 @@ export const locationPages: LocationPageCopy[] = [
     description:
       "Appliance and HVAC repair in Niles, IL. Diagnosis first, then a written price. Ranches, townhomes, and small businesses. Book online.",
     opening: [
-      "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Niles, including ZIP code 60714.",
+      "USA Appliance & HVAC is based in Rolling Meadows and serves Chicago and the northwest suburbs. We handle appliance and HVAC calls in Niles, including ZIP code 60714.",
       "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls in the residential streets and at the small commercial kitchens along the main roads.",
       `Call ${company.phone} or book online.`,
     ],
@@ -1736,7 +1740,7 @@ export const locationPages: LocationPageCopy[] = [
     description:
       "Appliance and HVAC repair in Park Ridge, IL. Diagnosis first, then a written price. Brick houses and downtown condos. Book online.",
     opening: [
-      "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Park Ridge, including ZIP code 60068.",
+      "USA Appliance & HVAC is based in Rolling Meadows and serves Chicago and the northwest suburbs. We handle appliance and HVAC calls in Park Ridge, including ZIP code 60068.",
       "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls in the brick neighborhoods and near the Uptown Metra station.",
       `Call ${company.phone} or book online.`,
     ],
@@ -1762,7 +1766,7 @@ export const locationPages: LocationPageCopy[] = [
     description:
       "Appliance and HVAC repair in Des Plaines, IL. Diagnosis first, then a written price. Houses near downtown and the river. Book online.",
     opening: [
-      "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Des Plaines, including ZIP codes 60016 and 60018.",
+      "USA Appliance & HVAC is based in Rolling Meadows and serves Chicago and the northwest suburbs. We handle appliance and HVAC calls in Des Plaines, including ZIP codes 60016 and 60018.",
       "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls downtown near the Metra station and in the neighborhoods along River Road and Golf Road.",
       `Call ${company.phone} or book online.`,
     ],
@@ -1788,7 +1792,7 @@ export const locationPages: LocationPageCopy[] = [
     description:
       "Appliance and HVAC repair in Franklin Park, IL. Diagnosis first, then a written price. Houses and industrial-park kitchens. Book online.",
     opening: [
-      "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Franklin Park, including ZIP code 60131.",
+      "USA Appliance & HVAC is based in Rolling Meadows and serves Chicago and the northwest suburbs. We handle appliance and HVAC calls in Franklin Park, including ZIP code 60131.",
       "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls in the residential streets and at kitchens in the industrial park.",
       `Call ${company.phone} or book online.`,
     ],
@@ -1814,7 +1818,7 @@ export const locationPages: LocationPageCopy[] = [
     description:
       "Appliance and HVAC repair in Northbrook, IL. Diagnosis first, then a written price. Subdivisions and downtown condos. Book online.",
     opening: [
-      "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Northbrook, including ZIP code 60062.",
+      "USA Appliance & HVAC is based in Rolling Meadows and serves Chicago and the northwest suburbs. We handle appliance and HVAC calls in Northbrook, including ZIP code 60062.",
       "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls downtown and in the subdivisions north of Dundee Road.",
       `Call ${company.phone} or book online.`,
     ],
@@ -1840,7 +1844,7 @@ export const locationPages: LocationPageCopy[] = [
     description:
       "Appliance and HVAC repair in Glenview, IL. Diagnosis first, then a written price. Older homes and newer subdivisions. Book online.",
     opening: [
-      "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Glenview, including ZIP codes 60025 and 60026.",
+      "USA Appliance & HVAC is based in Rolling Meadows and serves Chicago and the northwest suburbs. We handle appliance and HVAC calls in Glenview, including ZIP codes 60025 and 60026.",
       "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls in the older streets near downtown and in the subdivisions toward The Glen.",
       `Call ${company.phone} or book online.`,
     ],
@@ -1866,7 +1870,7 @@ export const locationPages: LocationPageCopy[] = [
     description:
       "Appliance and HVAC repair in Morton Grove, IL. Diagnosis first, then a written price. Ranches, split-levels, and condos. Book online.",
     opening: [
-      "USA Appliance & HVAC is based in Chicago. We handle appliance and HVAC calls in Morton Grove, including ZIP code 60053.",
+      "USA Appliance & HVAC is based in Rolling Meadows and serves Chicago and the northwest suburbs. We handle appliance and HVAC calls in Morton Grove, including ZIP code 60053.",
       "Hours are Monday through Saturday, 7:00 AM to 6:00 PM. We take calls along Dempster Street and in the residential streets north and south of it.",
       `Call ${company.phone} or book online.`,
     ],
@@ -1912,6 +1916,9 @@ export const businessFacts = {
   addressRegion: "IL",
   postalCode: "60008",
   addressCountry: "US",
+  /** Pin of the Google Business Profile. */
+  latitude: 42.0524966,
+  longitude: -88.001753,
   priceRange: "$$",
   currenciesAccepted: "USD",
   paymentAccepted: "Cash, Credit Card, Debit Card",

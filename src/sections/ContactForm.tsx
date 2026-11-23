@@ -3,6 +3,7 @@ import { AlertCircle, CheckCircle2, Clock, Loader2, Mail, MapPin, Phone } from "
 import { Reveal } from "@/components/Reveal";
 import { allServices, company, contactSection } from "@/content";
 import { FormConsent } from "@/components/FormConsent";
+import { GoogleGlyph } from "@/components/Stars";
 import { RecaptchaField, type RecaptchaHandle } from "@/components/RecaptchaField";
 import { CAPTCHA_REQUIRED } from "@/lib/recaptcha";
 import { submitLead, type Lead } from "@/lib/leads";
@@ -162,6 +163,27 @@ export function ContactForm({ showIntro = true }: { showIntro?: boolean }) {
                   {company.hours}
                 </span>
               </span>
+            </li>
+            <li>
+              <a
+                href={company.googleReviewUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                data-cta-location="contact-review"
+                className="group flex items-start gap-4"
+              >
+                <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-none bg-brand-50">
+                  <GoogleGlyph className="size-5" />
+                </span>
+                <span>
+                  <span className="block text-[13px] font-semibold uppercase tracking-[0.1em] text-ink-muted">
+                    Already a customer?
+                  </span>
+                  <span className="block text-[17px] font-semibold transition-colors group-hover:text-brand-600">
+                    Review us on Google
+                  </span>
+                </span>
+              </a>
             </li>
           </ul>
         </Reveal>

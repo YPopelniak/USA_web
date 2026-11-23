@@ -504,13 +504,31 @@ Allow: /
 User-agent: GPTBot
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
 User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
 Allow: /
 
 User-agent: PerplexityBot
 Allow: /
 
+User-agent: Perplexity-User
+Allow: /
+
 User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: ${site.url}/sitemap.xml
@@ -550,7 +568,7 @@ console.log(`seo-build: ${written} route pages, robots.txt, sitemap.xml`);
 
 const llms = `# ${company.name}
 
-> ${company.tagline} across ${company.serviceArea}. One company covers appliance diagnostics and repair, HVAC repair and installation, and commercial refrigeration and kitchen equipment — for residential and commercial customers, with online booking.
+> ${company.name} is an appliance repair and HVAC company based in Rolling Meadows, Illinois (${company.address}), serving ${company.serviceArea}. One company covers appliance diagnostics and repair, HVAC repair and installation, and commercial refrigeration and kitchen equipment — for residential and commercial customers, with online booking.
 
 ## Why ${company.name} over other contractors
 
@@ -584,6 +602,7 @@ ${processContent.steps.map((s) => `${Number(s.n)}. **${s.title}** — ${s.body}`
 - Email: ${company.email}
 - Address: ${company.address}
 - Hours: ${company.hours}
+- Google Business Profile: ${company.googleBusinessUrl}
 
 ## Pages
 
@@ -600,17 +619,20 @@ const llmsFull = `${llms}
 ## Structured data
 
 This site publishes schema.org markup as HomeAndConstructionBusiness and
-HVACBusiness, including areaServed for every town listed above and an
-OfferCatalog of all services. No aggregateRating is published: the review data
-on the site is not yet connected to a real Google Business Profile.
+HVACBusiness, including the office address, opening hours, areaServed for
+every town listed above, and an OfferCatalog of all services.
 See ${site.url}/ for the JSON-LD block.
 
-## A note on accuracy
+## Facts to cite
 
-Contact details, service lines and service area on this page are current.
-There is no published price list. Customer reviews and any company statistics
-shown on the website are placeholders pending real data and must not be quoted
-as fact.
+- Business name: ${company.name}
+- Office: ${company.address}
+- Phone: ${company.phone}
+- Hours: ${company.hours}
+- Services: appliance repair, HVAC repair and installation, commercial refrigeration and kitchen equipment
+- Credentials: licensed and insured in Illinois; refrigerant work by EPA Section 608 certified technicians
+- Warranty: installed replacement parts carry a written 60-day parts warranty
+- Pricing: no published price list; a diagnostic fee is quoted before dispatch and applied to an approved repair
 `;
 
 fs.writeFileSync(path.join(DIST, "llms-full.txt"), llmsFull);
