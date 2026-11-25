@@ -2,7 +2,8 @@ import { BookButton } from "@/components/BookButton";
 import { CallButton } from "@/components/CallButton";
 import { Enter } from "@/components/Enter";
 import { Placeholder } from "@/components/Placeholder";
-import { hero } from "@/content";
+import { GoogleGlyph, Stars } from "@/components/Stars";
+import { googleReviews, hero } from "@/content";
 
 /**
  * The entrance used to be driven by Framer Motion. On the live site the image
@@ -47,6 +48,26 @@ export function Hero() {
               <CallButton variant="outline" size="lg" />
             </div>
           </Enter>
+
+          {googleReviews.total > 0 && (
+            <Enter delay={0.22}>
+              <a
+                href={googleReviews.profileUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                data-cta-location="hero-reviews"
+                className="mt-8 inline-flex items-center gap-3 rounded-[var(--radius-action)] border border-black/[0.08] bg-white px-4 py-2.5 transition-colors hover:border-brand-500"
+              >
+                <GoogleGlyph className="size-5" />
+                <Stars rating={googleReviews.rating} />
+                <span className="text-[14px] text-ink-muted">
+                  <span className="font-bold text-ink">{googleReviews.rating.toFixed(1)}</span>
+                  {" · "}
+                  {googleReviews.total} Google reviews
+                </span>
+              </a>
+            </Enter>
+          )}
         </div>
 
         <Enter

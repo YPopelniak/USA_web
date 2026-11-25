@@ -30,7 +30,7 @@ export const company = {
   googleReviewUrl:
     "https://www.google.com/maps/place//data=!4m3!3m2!1s0x880fb1e60eb41a49:0xa57bef64664dc67e!12e1",
   // TODO(real-data): confirm published hours and emergency availability
-  hours: "Mon – Sat, 7:00 AM – 6:00 PM",
+  hours: "Mon – Sat, 8:00 AM – 6:00 PM",
   serviceArea: "Chicago and surrounding areas",
   socials: [
     { label: "Instagram", href: "https://www.instagram.com/usaappliancehvac", icon: "instagram" },
@@ -585,9 +585,8 @@ export const footer = {
 };
 
 /**
- * Google Reviews — PLACEHOLDER until a Place ID exists.
- * Nothing here is published as schema.org aggregateRating: fabricated ratings
- * in structured data violate Google's policy and risk a manual action.
+ * Google Reviews, shown on the site exactly as they appear on Google.
+ * Not published as schema.org aggregateRating (see placeId below).
  */
 export type GoogleReview = {
   author: string;
@@ -608,13 +607,63 @@ export const googleReviews: {
   items: GoogleReview[];
 } = {
   kicker: "Customer reviews",
-  title: "What Chicago customers say",
-  placeId: "", // TODO(real-data): Google Business Profile place_id
+  title: "What our customers say on Google",
+  /*
+   * Left empty on purpose: it gates aggregateRating in schema.ts. Google does
+   * not show stars for reviews a business republishes about itself.
+   */
+  placeId: "",
   profileUrl: "https://maps.google.com/?cid=11924387652885661310",
-  rating: 0,
-  total: 0,
-  distribution: [],
-  items: [],
+  /*
+   * Copied by hand from the Google Business Profile, word for word.
+   * Update rating, total, distribution and items together when reviews change.
+   */
+  rating: 5.0,
+  total: 6,
+  distribution: [
+    { stars: 5, count: 6 },
+    { stars: 4, count: 0 },
+    { stars: 3, count: 0 },
+    { stars: 2, count: 0 },
+    { stars: 1, count: 0 },
+  ],
+  items: [
+    {
+      author: "Artur M",
+      initial: "A",
+      rating: 5,
+      when: "Nov 24, 2026",
+      text: "Thank you USA Appliance Repair for fixing my oven just before Thanksgiving. Robert did a great job",
+    },
+    {
+      author: "Video hikvision",
+      initial: "V",
+      rating: 5,
+      when: "Nov 23, 2026",
+      text: "USA Appliance & HVAC Repair fixed my furnace and brought the heat back into my home! Thank you, Daniel, for your quick and professional service. Highly recommend!",
+    },
+    {
+      author: "Olena Diduk",
+      initial: "O",
+      rating: 5,
+      when: "Nov 22, 2026",
+      text: "Very reliable service with an experienced team. Highly recommend! Communication was easy, and the HVAC repair service was excellent. Great overall experience!",
+    },
+    {
+      author: "SLOWEMOTION FLAVA",
+      initial: "S",
+      rating: 5,
+      when: "Nov 22, 2026",
+      text: "Repaired my dishwasher perfectly! Excellent experience! I would highly recommend them",
+    },
+    {
+      author: "Extreme Carriers",
+      initial: "E",
+      rating: 5,
+      when: "Nov 23, 2026",
+      text: "Thank you USA Appliance HVAC repair for fixing my furnace",
+    },
+  ],
 };
 
 export const crisp = {
@@ -902,7 +951,7 @@ export const businessFacts = {
   openingHours: [
     {
       days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      opens: "07:00",
+      opens: "08:00",
       closes: "18:00",
     },
   ],
