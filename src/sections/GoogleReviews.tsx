@@ -54,18 +54,18 @@ export function GoogleReviews() {
           className="mt-12"
           style={{ ["--marquee-edge" as string]: "var(--color-surface)" }}
         >
-          <Marquee speed={Math.max(40, g.items.length * 12)}>
+          <Marquee stretch speed={Math.max(40, g.items.length * 12)}>
             {g.items.map((r) => (
               <article
                 key={r.author}
-                className="flex h-[244px] w-[320px] shrink-0 flex-col rounded-[var(--radius-card)] border border-black/[0.08] bg-white p-6 sm:w-[360px]"
+                className="flex w-[300px] shrink-0 flex-col rounded-[var(--radius-card)] border border-black/[0.08] bg-white p-6 sm:w-[360px]"
               >
                 <div className="flex items-center justify-between">
                   <Stars rating={r.rating} size="size-4" />
                   <GoogleGlyph className="size-4" />
                 </div>
 
-                <p className="mt-4 line-clamp-5 text-[15px] leading-relaxed text-ink">
+                <p className="mt-4 text-[15px] leading-relaxed text-ink">
                   “{r.text}”
                 </p>
 

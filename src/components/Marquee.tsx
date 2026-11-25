@@ -17,14 +17,18 @@ export function Marquee({
   children,
   speed = 60,
   reverse = false,
+  stretch = false,
   className,
 }: {
   children: ReactNode;
   /** Seconds for one full pass. Longer = slower. */
   speed?: number;
   reverse?: boolean;
+  /** Give every item the height of the tallest one. */
+  stretch?: boolean;
   className?: string;
 }) {
+  const align = stretch ? "items-stretch" : "items-center";
   return (
     <div
       className={cn("marquee group relative overflow-hidden", className)}
@@ -32,12 +36,13 @@ export function Marquee({
     >
       <div
         className={cn(
-          "marquee-track flex w-max items-center gap-3 py-1",
+          "marquee-track flex w-max gap-3 py-1",
+          align,
           reverse && "marquee-track-reverse",
         )}
       >
-        <div className="flex shrink-0 items-center gap-3">{children}</div>
-        <div className="flex shrink-0 items-center gap-3" aria-hidden="true">
+        <div className={cn("flex shrink-0 gap-3", align)}>{children}</div>
+        <div className={cn("flex shrink-0 gap-3", align)} aria-hidden="true">
           {children}
         </div>
       </div>
